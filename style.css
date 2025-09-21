@@ -43,3 +43,7 @@
     display: none;
   }
 }
+.social-sidebar a:hover {
+  transform: scale(1.5) rotate(50deg);
+  opacity: 0.9;
+}
