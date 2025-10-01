@@ -1007,3 +1007,17 @@ footer::before {
 .social-links .fa-x-twitter { color: #000; }
 .social-links .fa-facebook { color: #1877F2; }
 .social-links .fa-youtube { color: #FF0000; }
+
+.hero-bg-animation {
+    background: url("imagess/hero-bg.jpg") no-repeat center center;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -2;
+}
+
+.dark-mode .hero-bg-animation {
+    background: url("imagess/hero-bg-dark.jpg") no-repeat center center;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -2;
+}
