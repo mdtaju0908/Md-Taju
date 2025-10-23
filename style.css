@@ -1,0 +1,49 @@
+/* Sidebar container */
+.social-sidebar {
+  position: fixed;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* Each button */
+.social-sidebar a {
+  display: block;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Platform colors */
+.instagram { 
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); 
+}
+.facebook  { background: #3b5998; }
+.youtube   { background: #FF0000; }   
+.github    { background: #333; }      
+.linkedin  { background: #0A66C2; }   
+.x         { background: #000000; }
+
+/* Hover effect */
+.social-sidebar a:hover {
+  opacity: 0.8;
+}
+
+/* Hide on mobile, only desktop */
+@media (max-width: 768px) {
+  .social-sidebar {
+    display: none;
+  }
+}
+.social-sidebar a:hover {
+  transform: scale(1.5) rotate(50deg);
+  opacity: 0.9;
+}
