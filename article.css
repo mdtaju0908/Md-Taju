@@ -1,0 +1,172 @@
+/* =========================================================
+   Md Taju | Professional Article Page CSS (Responsive + Dark Mode)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #0078ff;
+  --secondary: #0056b3;
+  --text: #2a2a2a;
+  --subtext: #555;
+  --bg: #f5f8fc;
+  --card: #fff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 🌙 Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e6edf3;
+    --subtext: #a5b0bb;
+    --shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+/* ===== Header Styling ===== */
+.article-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  text-align: center;
+  padding: 70px 20px 50px;
+  border-radius: 0 0 50px 50px;
+  box-shadow: var(--shadow);
+  animation: slideDown 1s ease;
+}
+
+.article-header h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.article-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ===== Article Body ===== */
+.article-section {
+  max-width: 900px;
+  background: var(--card);
+  margin: -40px auto 60px;
+  padding: 40px 50px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  position: relative;
+  animation: fadeIn 1s ease;
+}
+
+.article-section h2 {
+  color: var(--primary);
+  border-left: 4px solid var(--primary);
+  padding-left: 12px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.article-section p {
+  font-size: 1rem;
+  color: var(--subtext);
+  margin: 12px 0;
+}
+
+.article-section ul {
+  margin: 10px 0 10px 25px;
+}
+
+.article-section li {
+  margin-bottom: 8px;
+}
+
+/* Links */
+.article-section a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.article-section a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* Quote Box */
+blockquote {
+  background: linear-gradient(135deg, #e8f2ff, #f6fbff);
+  border-left: 5px solid var(--primary);
+  margin: 25px 0;
+  padding: 18px 20px;
+  font-style: italic;
+  color: var(--text);
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    background: rgba(0, 120, 255, 0.1);
+  }
+}
+
+/* Divider */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 40px 0;
+}
+
+/* Footer */
+.footer-text {
+  text-align: center;
+  color: var(--subtext);
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .article-header {
+    padding: 60px 15px 40px;
+  }
+
+  .article-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .article-section {
+    padding: 25px 20px;
+    margin: -30px 15px 40px;
+  }
+
+  .article-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .article-section p {
+    font-size: 0.95rem;
+  }
+}
