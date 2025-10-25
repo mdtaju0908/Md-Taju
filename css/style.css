@@ -1001,13 +1001,6 @@ footer::before {
         margin-top: 20px;
     }
 }
-.social-links .fa-linkedin { color: #0A66C2; }
-.social-links .fa-github { color: #171515; }
-.social-links .fa-instagram { color: #E1306C; }
-.social-links .fa-x-twitter { color: #000; }
-.social-links .fa-facebook { color: #1877F2; }
-.social-links .fa-youtube { color: #FF0000; }
-
 .hero-bg-animation {
     background: url("imagess/hero-bg.jpg") no-repeat center center;
     background-size: cover;
@@ -1020,4 +1013,140 @@ footer::before {
     background-size: cover;
     opacity: 0.9;
     z-index: -2;
+}
+/* =====================================================
+   Md Taju — Footer (Auto Theme Compatible)
+   Works with: .dark / .dark-mode / .theme-dark
+   ===================================================== */
+
+footer.site-footer {
+  background-color: #f7f9fc;
+  color: #1a1a1a;
+  padding: 60px 25px 25px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+}
+
+/* -------- Dark Mode Variants -------- */
+body.dark footer.site-footer,
+body.dark-mode footer.site-footer,
+body.theme-dark footer.site-footer {
+  background-color: #0d1117;
+  color: #e8e8e8;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+footer.site-footer h3,
+footer.site-footer h4 {
+  color: #000;
+}
+
+body.dark footer.site-footer h3,
+body.dark footer.site-footer h4,
+body.dark-mode footer.site-footer h3,
+body.dark-mode footer.site-footer h4,
+body.theme-dark footer.site-footer h3,
+body.theme-dark footer.site-footer h4 {
+  color: #fff;
+}
+
+footer.site-footer a {
+  color: #0078ff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+footer.site-footer a:hover {
+  color: #004aad;
+  text-decoration: underline;
+}
+
+body.dark footer.site-footer a,
+body.dark-mode footer.site-footer a,
+body.theme-dark footer.site-footer a {
+  color: #4ea8ff;
+}
+
+body.dark footer.site-footer a:hover,
+body.dark-mode footer.site-footer a:hover,
+body.theme-dark footer.site-footer a:hover {
+  color: #fff;
+}
+
+/* -------- Footer Layout -------- */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo h3 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.footer-col h4 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.footer-col h4::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 2px;
+  background: #0078ff;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  margin-bottom: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark .footer-bottom,
+body.dark-mode .footer-bottom,
+body.theme-dark .footer-bottom {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.4rem;
+  }
+
+  .footer-col h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+  }
 }
