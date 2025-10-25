@@ -42,7 +42,26 @@
     <meta name="keywords" content="Md Taju, mdtaju.tech, web developer, portfolio, HTML, CSS, JavaScript">
     <meta name="author" content="Md Taju">
     <meta name="robots" content="index, follow">
-
+ <script>
+fetch("https://api.indexnow.org/IndexNow", {
+  method: "POST",
+  headers: { "Content-Type": "application/json; charset=utf-8" },
+  body: JSON.stringify({
+    host: "mdtaju.tech",
+    key: "7b43eb2e1a66407a8de369692dfa5fd2",
+    keyLocation: "https://mdtaju.tech/7b43eb2e1a66407a8de369692dfa5fd2.txt",
+    urlList: [
+      "https://mdtaju.tech/",
+      "https://mdtaju.tech/article.html",
+      "https://mdtaju.tech/about.html",
+      "https://mdtaju.tech/education.html",
+      "https://mdtaju.tech/gallery.html"
+    ]
+  })
+});
+</script>
+</body>
+</html>
     <body>
 <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -161,5 +180,6 @@
 <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
