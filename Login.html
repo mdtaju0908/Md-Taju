@@ -75,7 +75,23 @@
       <input type="submit" value="Login">
     </form>
   </div>
-  <script src="js/script.js"></script>
+   <script>
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Simple static login for demo
+      if (username === "md_taju0908" && password === "Md_Taju0908") {
+        localStorage.setItem("isLoggedIn", "true");
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Redirect to dashboard
+      } else {
+        alert("Invalid username or password!");
+      }
+    });
+  </script>
 </body>
 </html>
-
