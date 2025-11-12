@@ -923,50 +923,148 @@ footer::before {
     color: rgb(5, 246, 25);
 }
 
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .about-content {
-        flex-direction: column;
-    }
-    
-    .about-image {
-        order: -1;
-        margin-bottom: 30px;
-    }
-    
-    .timeline::before {
-        left: 30px;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 80px);
-        margin-left: 80px !important;
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-content::before,
-    .timeline-item:nth-child(even) .timeline-content::before {
-        left: -50px;
-    }
+/* ===============================
+   Education & Certifications — Modern Card Layout (LinkedIn Style)
+   =============================== */
+
+.edu-section {
+  margin: 80px auto;
+  max-width: 1000px;
+  padding: 0 20px;
 }
 
+.edu-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-shadow: var(--neon-glow);
+  margin-bottom: 25px;
+  border-bottom: 3px solid var(--primary-color);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.dark-mode .edu-section h2 {
+  color: var(--dm-primary-color);
+  text-shadow: var(--dm-neon-glow);
+  border-color: var(--dm-primary-color);
+}
+
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+  padding: 20px 25px;
+  transition: var(--transition);
+}
+
+.dark-mode .edu-card {
+  background: var(--dm-card-bg);
+  border: var(--dm-border);
+  box-shadow: var(--dm-glass-shadow);
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+}
+
+.edu-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-right: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+.edu-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.dark-mode .edu-info h3 {
+  color: var(--dm-text-color);
+}
+
+.edu-info p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: var(--light-text);
+}
+
+.dark-mode .edu-info p {
+  color: var(--dm-light-text);
+}
+
+.edu-date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  margin-top: 3px;
+}
+
+.dark-mode .edu-date {
+  color: var(--dm-accent-color);
+}
+
+.edu-desc {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 8px;
+}
+
+.dark-mode .edu-desc {
+  color: var(--dm-text-color);
+}
+
+.credential-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.credential-link:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+.dark-mode .credential-link {
+  color: var(--dm-primary-color);
+}
+
+.dark-mode .credential-link:hover {
+  color: var(--dm-secondary-color);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 40px;
-        transition: var(--transition);
-    }
+  .edu-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .edu-card img {
+    margin: 0 0 15px 0;
+  }
+
+  .edu-info h3 {
+    font-size: 1.1rem;
+  }
+   
     
     .nav-menu li {
         margin: 15px 0;
@@ -1001,6 +1099,80 @@ footer::before {
         margin-top: 20px;
     }
 }
+
+/* ===============================
+   Certification Modal (LinkedIn Style)
+   =============================== */
+.cert-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.cert-modal-content {
+  background: var(--card-bg);
+  margin: auto;
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+}
+
+.dark-mode .cert-modal-content {
+  background: var(--dm-card-bg);
+  box-shadow: var(--dm-glass-shadow);
+}
+
+.cert-modal-content img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.cert-modal-content h3 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.dark-mode .cert-modal-content h3 {
+  color: var(--dm-primary-color);
+}
+
+.cert-modal-content p {
+  color: var(--text-color);
+  margin: 6px 0;
+}
+
+.dark-mode .cert-modal-content p {
+  color: var(--dm-text-color);
+}
+
+.cert-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cert-close:hover {
+  color: var(--secondary-color);
+}
+
+
 .hero-bg-animation {
     background: url("imagess/hero-bg.jpg") no-repeat center center;
     background-size: cover;
