@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education - Md Taju</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/M.jpg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education - Md Taju</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/M.jpg" type="image/svg+xml">
+  <meta property="og:image" content="https://mdtaju.tech/images/M.jpg">
 </head>
-    <meta property="og:image" content="https://mdtaju.tech/images/M.jpg">
+<body>
+
+  <!-- Certification Popup Modal -->
+<div id="cert-modal" class="cert-modal">
+  <div class="cert-modal-content">
+    <span class="cert-close">&times;</span>
+    <img id="cert-image" src="" alt="Certificate Image">
+    <h3 id="cert-title"></h3>
+    <p id="cert-org"></p>
+    <p id="cert-date"></p>
+    <a id="cert-link" href="#" target="_blank" class="credential-link">
+      View Credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+
+
+ <meta property="og:image" content="https://mdtaju.tech/images/M.jpg">
 <body>
 <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -33,102 +51,143 @@
        <a href="https://www.linkedin.com/in/md-taju0908/" 
        class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
   </div>
-    
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/profile-photo.jpg" alt="Profile Photo" class="profile-photo">
-                <a href="index.html">𝙈𝙙 𝙏𝙖𝙟𝙪</a>
-            </div>
-            <nav>
-                <input type="checkbox" id="nav-toggle">
-                <label for="nav-toggle" class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="education.html" class="active">Education</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a herf="Login.html">Login</a></li>
-                    <li><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1>My Education</h1>
-                <p>Academic journey & Qualifications</p>
-            </div>
-        </section>
+<!-- Header -->
+<header>
+  <div class="container header">
+    <div class="logo">
+      <img src="images/profile-photo.jpg" alt="Profile Photo" class="profile-photo">
+      <a href="index.html">𝙈𝙙 𝙏𝙖𝙟𝙪</a>
+    </div>
+    <nav>
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="education.html" class="active">Education</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="Login.html">Login</a></li>
+        <li><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-        <section class="education">
-            <div class="container">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>B.Tech CSE (AI & ML)</h3>
-                            <p class="timeline-date">2024 - Present</p>
-                            <p class="timeline-institution"><b>VIVEKANANDA GLOBAL UNIVERSITY, JAIPUR <a href="https://www.vgu.ac.in/" target="_blank" rel="noopener noreferrer">👉🎓</a></b></p>
-                            <p>Pursuing Bachelor of Technology in Computer Science & Engineering with Specialization in Artificial Intelligence and Machine Learning.</p>
-                            <ul class="timeline-details">
-                                <!--<li>Core subjects: Data Structures, Algorithms, Database Management</li>
-                                <li>Specialization: Machine Learning, Neural Networks, Computer Vision</li>
-                                <li>Projects: Image Recognition System, Predictive Analytics Model</li>-->
-                            </ul>
-                        </div>
-                    </div>
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <h1>Education & Certifications</h1>
+    <p>My academic journey and professional achievements</p>
+  </div>
+</section>
 
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>12th Standard</h3>
-                            <p class="timeline-date">2022 - 2024</p>
-                            <p class="timeline-institution"><b>Bihar School Examination Board (BSEB)<a href="https://biharboardonline.com/" target="_blank" rel="noopener noreferrer">👉🏫</a></b></p>
-                            <p>Completed Higher Secondary Education with focus on Science and Mathematics.</p>
-                            <ul class="timeline-details">
-                                <li>Subjects (PCMB): Physics, Chemistry, Mathematics, Biology</li>
-                              <!--  <li>Percentage: 85%</li>
-                                <li>Activities: Science Club, Mathematics Olympiad</li> -->
-                            </ul>
-                        </div>
-                    </div>
+<!-- Main Content -->
+<main class="container">
 
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>10th Standard</h3>
-                            <p class="timeline-date">2020 - 2022</p>
-                            <p class="timeline-institution"><b>SARVODAY HIGH SCHOOL CHANDCHAUR MATHURAPUR, SAMASTIPUR<a href="https://schools.org.in/samastipur/10190502520/sarvoday-high-school-chand-chour-mathurapur.html" target="_blank" rel="noopener noreferrer">👉🏫</a></b></p>
-                            <p>Completed Secondary Education with distinction.</p>
-                            <ul class="timeline-details">
-                                <li>Subjects: Science, Mathematics, Social Studies, Languages</li>
-                               <!-- <li>Percentage: 90%</li>
-                                <li>Activities: Quiz Competition, Sports</li> -->
-                            </ul>
-                        </div>
-                    </div>
+  <!-- Education Section -->
+  <section class="edu-section">
+    <h2>Education</h2>
 
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>ADCA (Advance Diploma in Computer Applications)</h3>
-                            <p class="timeline-date">2025</p>
-                            <p class="timeline-institution"><b>PINGALA INSTITUTE OF COMPUTER SCIENCE PVT. LTD.<a href="https://picsbharat.com/product/002203/" target="_blank" rel="noopener noreferrer">👉💻</a></b></p>
-                            <p>Completed specialized training in computer applications and programming.</p>
-                            <ul class="timeline-details">
-                                <li><b>Grade: A</b></li>
-                                <li>Fundamentals of Windows & IT, MS-Word, MS-Excel, MS-PowerPoint, Internet & HTML, MS-ACCESS, TALLY PRIME, Photoshop, Pagemaker, CoreIDraw</li>
-                                <li>Projects: Website Development, Database Management</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="site-footer">
+    <div class="edu-card">
+      <img src="images/vgu-logo.jpg" alt="VGU Logo">
+      <div class="edu-info">
+        <h3>Vivekananda Global University</h3>
+        <p>Bachelor of Technology in Computer Science & Engineering (AI & ML)</p>
+        <span class="edu-date">2024 - Present</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/bseb.jpeg" alt="BSEB Logo">
+      <div class="edu-info">
+        <h3>Bihar School Examination Board (BSEB)</h3>
+        <p>Intermediate (Science Stream - PCMB)</p>
+        <span class="edu-date">2022 - 2024</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/school.jpeg" alt="School Logo">
+      <div class="edu-info">
+        <h3>Sarvoday High School Chandchaur Mathurapur, Samastipur</h3>
+        <p>Matriculation - Science</p>
+        <span class="edu-date">2020 - 2022</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/pigala.png" alt="Pingala Institute Logo">
+      <div class="edu-info">
+        <h3>Pingala Institute of Computer Science Pvt. Ltd.</h3>
+        <p>Advance Diploma in Computer Applications (ADCA) · Grade: A</p>
+        <span class="edu-date">Issued 2025</span>
+        <p class="edu-desc">Windows & IT, MS Office Suite, HTML, Tally Prime, Photoshop, CorelDraw, PageMaker, Database Projects</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="edu-section">
+    <h2>Certifications</h2>
+
+    <div class="edu-card">
+      <img src="images/kennesaw.png" alt="Kennesaw University Logo">
+      <div class="edu-info">
+        <h3>Business Model Canvas: A Tool for Entrepreneurs and Innovators</h3>
+        <p>Kennesaw State University</p>
+        <span class="edu-date">Issued Apr 2025 · Credential ID VWIMSXH6KNC7</span>
+        <a href="https://www.credly.com/badges/aeb00122-deec-49a2-95a4-292232c9bf04/public_url?trk=public_profile_see-credential" 
+           class="credential-link" target="_blank" rel="noopener noreferrer">
+           See credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/lund.png" alt="Lund University Logo">
+      <div class="edu-info">
+        <h3>Digital Business Models</h3>
+        <p>Lund University</p>
+        <span class="edu-date">Issued Apr 2025 · Credential ID ZIZ3UB2OVSF1</span>
+        <a href="#" class="credential-link" target="_blank" rel="noopener noreferrer">
+          See credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/uva.png" alt="University of Virginia Logo">
+      <div class="edu-info">
+        <h3>Innovating with the Business Model Canvas</h3>
+        <p>University of Virginia</p>
+        <span class="edu-date">Issued Apr 2025 · Credential ID KBXSIRFHYBK7</span>
+        <a href="#" class="credential-link" target="_blank" rel="noopener noreferrer">
+          See credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <img src="images/aws.jpeg" alt="AWS Logo">
+      <div class="edu-info">
+        <h3>AWS Academy Graduate - AWS Academy Cloud Foundations</h3>
+        <p>Amazon Web Services (AWS)</p>
+        <span class="edu-date">Issued Apr 2025</span>
+        <a href="#" class="credential-link" target="_blank" rel="noopener noreferrer">
+          See credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
   <div class="footer-container">
     <div class="footer-col footer-logo">
       <h3>𝙈𝙙 𝙏𝙖𝙟𝙪</h3>
@@ -161,7 +220,6 @@
     <p>&copy; 2025 𝙈𝙙 𝙏𝙖𝙟𝙪. All Rights Reserved.</p>
   </div>
 </footer>
-
 
 <script src="js/script.js"></script>
 </body>
