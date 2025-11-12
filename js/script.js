@@ -105,3 +105,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Trigger scroll event to check initial positions
     window.dispatchEvent(new Event('scroll'));
 });
+
+
+
+
+// ===== Certification Modal =====
+const modal = document.getElementById("cert-modal");
+const certImage = document.getElementById("cert-image");
+const certTitle = document.getElementById("cert-title");
+const certOrg = document.getElementById("cert-org");
+const certDate = document.getElementById("cert-date");
+const certLink = document.getElementById("cert-link");
+const certClose = document.querySelector(".cert-close");
+
+// Select all certification cards
+document.querySelectorAll(".edu-section:nth-of-type(2) .edu-card img").forEach((img, index) => {
+  img.addEventListener("click", () => {
+    const card = img.closest(".edu-card");
+    certImage.src = img.src;
+    certTitle.textContent = card.querySelector("h3").textContent;
+    certOrg.textContent = card.querySelector("p").textContent;
+    certDate.textContent = card.querySelector(".edu-date").textContent;
+    certLink.href = card.querySelector(".credential-link").href;
+    modal.style.display = "block";
+  });
+});
+
+// Close modal
+certClose.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close modal when clicking outside
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
