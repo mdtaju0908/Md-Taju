@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// ===== Certification Modal =====
+/// Modal Elements
 const modal = document.getElementById("cert-modal");
 const certImage = document.getElementById("cert-image");
 const certTitle = document.getElementById("cert-title");
@@ -118,27 +118,34 @@ const certDate = document.getElementById("cert-date");
 const certLink = document.getElementById("cert-link");
 const certClose = document.querySelector(".cert-close");
 
-// Select all certification cards
-document.querySelectorAll(".edu-section:nth-of-type(2) .edu-card img").forEach((img, index) => {
+// Click event on logos
+document.querySelectorAll(".edu-card img").forEach(img => {
   img.addEventListener("click", () => {
+
     const card = img.closest(".edu-card");
-    certImage.src = img.src;
+
+    // Load Certificate Image
+    certImage.src = img.dataset.certificate;
+
+    // Load Text Info
     certTitle.textContent = card.querySelector("h3").textContent;
     certOrg.textContent = card.querySelector("p").textContent;
     certDate.textContent = card.querySelector(".edu-date").textContent;
     certLink.href = card.querySelector(".credential-link").href;
+
+    // Show Modal
     modal.style.display = "block";
   });
 });
 
-// Close modal
+// X button close
 certClose.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// Close modal when clicking outside
-window.addEventListener("click", (event) => {
-  if (event.target === modal) {
+// 👉 Close if clicked outside modal-content
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
     modal.style.display = "none";
   }
 });
