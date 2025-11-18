@@ -137,7 +137,6 @@ document.querySelectorAll(".edu-card img").forEach(img => {
     modal.style.display = "block";
   });
 });
-
 // X button close
 certClose.addEventListener("click", () => {
   modal.style.display = "none";
