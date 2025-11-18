@@ -33,8 +33,8 @@
 }
 
 * {
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -407,6 +407,32 @@ main {
 .dark-mode .hero-bg-animation {
     background: linear-gradient(135deg, var(--dm-background-color) 0%, var(--dm-primary-color) 100%);
 }
+/* Mobile Navigation Fix */
+@media (max-width: 768px) {
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: 0.4s ease;
+    }
+
+    #nav-toggle:checked ~ .nav-menu {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
 
 .dark-mode .hero-bg-animation::before {
     background: 
@@ -450,6 +476,13 @@ main {
     margin-bottom: 40px;
     letter-spacing: 3px;
     animation: fadeInUp 1s ease-out 0.3s both;
+}
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
 }
 
 .hero .tagline span {
@@ -623,128 +656,7 @@ main {
     text-shadow: var(--dm-neon-glow);
 }
 
-/* Education Timeline */
-.education {
-    padding: 80px 0;
-}
 
-.timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: var(--gradient-bg);
-    transform: translateX(-50%);
-}
-
-.dark-mode .timeline::before {
-    background: var(--dm-gradient-bg);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 80px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.timeline-item.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-content {
-    position: relative;
-    background-color: var(--card-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: var(--glass-shadow);
-    width: calc(50% - 50px);
-    margin-left: auto;
-    border: var(--border);
-}
-
-.dark-mode .timeline-content {
-    background-color: var(--dm-card-bg);
-    box-shadow: var(--dm-glass-shadow);
-    border: var(--dm-border);
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.timeline-content::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    width: 20px;
-    height: 20px;
-    background: var(--gradient-bg);
-    border-radius: 50%;
-    box-shadow: var(--neon-glow);
-}
-
-.dark-mode .timeline-content::before {
-    background: var(--dm-gradient-bg);
-    box-shadow: var(--dm-neon-glow);
-}
-
-.timeline-item:nth-child(odd) .timeline-content::before {
-    right: -60px;
-}
-
-.timeline-item:nth-child(even) .timeline-content::before {
-    left: -60px;
-}
-
-.timeline-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.dark-mode .timeline-content h3 {
-    color: var(--dm-primary-color);
-}
-
-.timeline-date {
-    font-style: italic;
-    color: var(--light-text);
-    margin-bottom: 5px;
-}
-
-.dark-mode .timeline-date {
-    color: var(--dm-light-text);
-}
-
-.timeline-institution {
-    font-weight: 500;
-    margin-bottom: 15px;
-}
-
-.timeline-details {
-    margin-top: 15px;
-    padding-left: 20px;
-}
-
-.timeline-details li {
-    list-style-type: disc;
-    margin-bottom: 8px;
-    position: relative;
-}
 
 /* Gallery */
 .gallery {
@@ -1116,6 +1028,26 @@ footer::before {
   background-color: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(8px);
 }
+
+.cert-modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.cert-modal-content {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+.cert-date {
+  display: block;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.cert-modal-content {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
 
 .cert-modal-content {
   background: var(--card-bg);
