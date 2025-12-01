@@ -37,7 +37,7 @@ It is **responsive**, **modern**, and includes **dark mode**, **animated element
 ---
 
 ## 💻 How to Use
-   Click here for see my website https://mdtaju0908.github.io/Md-Taju/
+   Click here for see my website https://mdtaju.tech/
 
 ## 🧠 About Me
 
