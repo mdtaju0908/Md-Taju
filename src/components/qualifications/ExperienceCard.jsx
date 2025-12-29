@@ -2,6 +2,12 @@ import React from 'react';
 import { format } from 'date-fns';
 
 const ExperienceCard = ({ experience }) => {
+  const safeDate = (d, fmt) => {
+    if (!d) return '';
+    const parsed = new Date(d);
+    return isNaN(parsed.getTime()) ? '' : format(parsed, fmt);
+  };
+  const skills = Array.isArray(experience?.skills) ? experience.skills : [];
   return (
     <div className="
       flex flex-col md:flex-row gap-4 p-6
@@ -30,11 +36,11 @@ const ExperienceCard = ({ experience }) => {
 
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400 mb-4">
           <span>
-            {format(new Date(experience.startDate), 'MMM yyyy')} –{' '}
+            {safeDate(experience.startDate, 'MMM yyyy')} –{' '}
             {experience.isCurrent
               ? 'Present'
               : experience.endDate
-              ? format(new Date(experience.endDate), 'MMM yyyy')
+              ? safeDate(experience.endDate, 'MMM yyyy')
               : ''}
           </span>
 
@@ -49,9 +55,9 @@ const ExperienceCard = ({ experience }) => {
           </p>
         )}
 
-        {experience.skills?.length > 0 && (
+        {skills.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            {experience.skills.map((skill, index) => (
+            {skills.map((skill, index) => (
               <span
                 key={index}
                 className="
