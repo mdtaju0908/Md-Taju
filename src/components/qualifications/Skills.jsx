@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '@/utils/api';
+import api, { unwrapList } from '@/utils/api';
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
@@ -8,8 +8,8 @@ const Skills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const { data } = await api.get('/skills');
-        setSkills(data);
+        const res = await api.get('/skills');
+        setSkills(unwrapList(res, 'data'));
       } catch (error) {
         console.error("Failed to fetch skills", error);
       } finally {
@@ -20,9 +20,9 @@ const Skills = () => {
   }, []);
 
   if (loading) return <div className="text-center text-gray-500 dark:text-gray-400">Loading skills...</div>;
-  if (skills.length === 0) return null;
+  if (!Array.isArray(skills) || skills.length === 0) return <div className="text-center text-gray-500 dark:text-gray-400">No data available</div>;
 
-  const groupedSkills = skills.reduce((acc, skill) => {
+  const groupedSkills = (Array.isArray(skills) ? skills : []).reduce((acc, skill) => {
     const category = skill.category || 'Other';
     if (!acc[category]) acc[category] = [];
     acc[category].push(skill);
