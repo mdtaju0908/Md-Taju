@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '@/utils/api';
+import api, { unwrapList } from '@/utils/api';
 import { format } from 'date-fns';
 
 const CertificationsManager = () => {
@@ -22,8 +22,8 @@ const CertificationsManager = () => {
 
   const fetchCertifications = async () => {
     try {
-      const { data } = await api.get('/certifications');
-      setCertifications(data);
+      const res = await api.get('/certifications');
+      setCertifications(unwrapList(res, 'data'));
     } catch (error) {
       console.error("Error fetching certifications:", error);
     } finally {
@@ -202,7 +202,7 @@ const CertificationsManager = () => {
       <div className="space-y-4">
         {loading ? (
           <p>Loading...</p>
-        ) : certifications.map((cert) => (
+        ) : (Array.isArray(certifications) ? certifications : []).map((cert) => (
           <div key={cert._id} className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl flex justify-between items-start">
             <div>
               <h4 className="text-xl font-bold">{cert.name}</h4>
