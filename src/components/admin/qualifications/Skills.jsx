@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '@/utils/api';
+import api, { unwrapList } from '@/utils/api';
 
 const SkillsManager = () => {
   const [skills, setSkills] = useState([]);
@@ -20,8 +20,8 @@ const SkillsManager = () => {
 
   const fetchSkills = async () => {
     try {
-      const { data } = await api.get('/skills');
-      setSkills(data);
+      const res = await api.get('/skills');
+      setSkills(unwrapList(res, 'data'));
     } catch (error) {
       console.error("Error fetching skills:", error);
     } finally {
@@ -146,7 +146,7 @@ const SkillsManager = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {loading ? (
           <p>Loading...</p>
-        ) : skills.map((skill) => (
+        ) : (Array.isArray(skills) ? skills : []).map((skill) => (
           <div key={skill._id} className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl flex justify-between items-center">
             <div>
               <h4 className="font-bold">{skill.name}</h4>
