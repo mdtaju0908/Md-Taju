@@ -3,7 +3,7 @@ import ExperienceCard from "./qualifications/ExperienceCard";
 import EducationCard from "./qualifications/EducationCard";
 import CertificationCard from "./qualifications/CertificationCard";
 import Skills from "./qualifications/Skills";
-import api from "@/utils/api";
+import api, { unwrapList } from "@/utils/api";
 
 export default function Qualifications() {
   const [activeTab, setActiveTab] = useState("experience");
@@ -24,9 +24,9 @@ export default function Qualifications() {
         ]);
 
         setData({
-          experience: expRes.data,
-          education: eduRes.data,
-          certifications: certRes.data
+          experience: unwrapList(expRes, 'data'),
+          education: unwrapList(eduRes, 'data'),
+          certifications: unwrapList(certRes, 'data')
         });
       } catch (error) {
         console.error("Error fetching qualifications:", error);
@@ -85,8 +85,8 @@ export default function Qualifications() {
           ) : (
             <div className="space-y-6 animate-fadeIn">
               {activeTab === "experience" &&
-                (data.experience.length > 0
-                  ? data.experience.map(item => (
+                (Array.isArray(data.experience) && data.experience.length > 0
+                  ? (data.experience || []).map(item => (
                       <ExperienceCard key={item._id} experience={item} />
                     ))
                   : <p className="text-center text-gray-500 dark:text-gray-400">No experience listed yet.</p>
@@ -94,8 +94,8 @@ export default function Qualifications() {
               }
 
               {activeTab === "education" &&
-                (data.education.length > 0
-                  ? data.education.map(item => (
+                (Array.isArray(data.education) && data.education.length > 0
+                  ? (data.education || []).map(item => (
                       <EducationCard key={item._id} education={item} />
                     ))
                   : <p className="text-center text-gray-500 dark:text-gray-400">No education listed yet.</p>
@@ -103,8 +103,8 @@ export default function Qualifications() {
               }
 
               {activeTab === "certifications" &&
-                (data.certifications.length > 0
-                  ? data.certifications.map(item => (
+                (Array.isArray(data.certifications) && data.certifications.length > 0
+                  ? (data.certifications || []).map(item => (
                       <CertificationCard key={item._id} certification={item} />
                     ))
                   : <p className="text-center text-gray-500 dark:text-gray-400">No certifications listed yet.</p>
