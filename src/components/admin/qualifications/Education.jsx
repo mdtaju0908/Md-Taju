@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '@/utils/api';
+import api, { unwrapList } from '@/utils/api';
 import { format } from 'date-fns';
 
 const EducationManager = () => {
@@ -23,8 +23,8 @@ const EducationManager = () => {
 
   const fetchEducation = async () => {
     try {
-      const { data } = await api.get('/education');
-      setEducation(data);
+      const res = await api.get('/education');
+      setEducation(unwrapList(res, 'data'));
     } catch (error) {
       console.error("Error fetching education:", error);
     } finally {
@@ -215,7 +215,7 @@ const EducationManager = () => {
       <div className="space-y-4">
         {loading ? (
           <p>Loading...</p>
-        ) : education.map((edu) => (
+        ) : (Array.isArray(education) ? education : []).map((edu) => (
           <div key={edu._id} className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl flex justify-between items-start">
             <div>
               <h4 className="text-xl font-bold">{edu.school}</h4>
