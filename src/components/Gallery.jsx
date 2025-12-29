@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api, { unwrapList } from '@/utils/api';
 import { motion } from 'framer-motion';
 
 const Gallery = () => {
@@ -11,8 +11,8 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/gallery`);
-        setGalleryItems(data);
+        const res = await api.get('/gallery');
+        setGalleryItems(unwrapList(res, 'data'));
         setLoading(false);
       } catch (error) {
         console.error('Error fetching gallery:', error);
