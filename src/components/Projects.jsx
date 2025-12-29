@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import api from '../utils/api';
+import api, { unwrapList } from '../utils/api';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -10,8 +10,8 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const { data } = await api.get('/projects');
-        setProjects(data);
+        const res = await api.get('/projects');
+        setProjects(unwrapList(res, 'data'));
       } catch (error) {
         console.error('Error fetching projects:', error);
       } finally {
@@ -43,7 +43,7 @@ const Projects = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayProjects.map((project, index) => (
+          {(Array.isArray(displayProjects) ? displayProjects : []).map((project, index) => (
             <motion.div
               key={project._id}
               initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ const Projects = () => {
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack?.map((tech, i) => (
+                  {(Array.isArray(project.techStack) ? project.techStack : []).map((tech, i) => (
                     <span key={i} className="text-xs font-medium px-2.5 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                       {tech}
                     </span>
