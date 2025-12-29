@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import api from '../utils/api';
+import api, { unwrapList } from '../utils/api';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const Certifications = () => {
@@ -10,8 +10,8 @@ const Certifications = () => {
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
-        const { data } = await api.get('/certifications');
-        setCertifications(data);
+        const res = await api.get('/certifications');
+        setCertifications(unwrapList(res, 'data'));
       } catch (error) {
         console.error('Error fetching certifications:', error);
       } finally {
@@ -31,8 +31,8 @@ const Certifications = () => {
     return <div className="text-center py-10">Loading certifications...</div>;
   }
 
-  if (certifications.length === 0) {
-    return null;
+  if (!Array.isArray(certifications) || certifications.length === 0) {
+    return <div className="text-center py-10">No data available</div>;
   }
 
   return (
@@ -50,7 +50,7 @@ const Certifications = () => {
         </motion.div>
 
         <div className="space-y-6">
-          {certifications.map((cert, index) => (
+          {(Array.isArray(certifications) ? certifications : []).map((cert, index) => (
             <motion.div
               key={cert._id}
               initial={{ opacity: 0, y: 20 }}
