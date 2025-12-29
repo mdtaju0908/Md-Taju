@@ -4,6 +4,30 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
+export const unwrapList = (response, preferredKey) => {
+  const d = response && response.data;
+  if (Array.isArray(d)) return d;
+  const obj = d && typeof d === 'object' ? d : {};
+  const keys = [
+    preferredKey,
+    'data',
+    'items',
+    'list',
+    'results',
+    'experiences',
+    'education',
+    'certifications',
+    'projects',
+    'skills',
+    'gallery'
+  ].filter(Boolean);
+  for (const k of keys) {
+    const v = obj[k];
+    if (Array.isArray(v)) return v;
+  }
+  return [];
+};
+
 api.interceptors.request.use(
   (config) => {
     const userInfo = localStorage.getItem('userInfo');
