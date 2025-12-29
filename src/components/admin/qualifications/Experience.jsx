@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '@/utils/api';
+import api, { unwrapList } from '@/utils/api';
 import { format } from 'date-fns';
 
 const ExperienceManager = () => {
@@ -24,8 +24,8 @@ const ExperienceManager = () => {
 
   const fetchExperiences = async () => {
     try {
-      const { data } = await api.get('/experiences');
-      setExperiences(data);
+      const res = await api.get('/experiences');
+      setExperiences(unwrapList(res, 'data'));
     } catch (error) {
       console.error("Error fetching experiences:", error);
     } finally {
@@ -232,7 +232,7 @@ const ExperienceManager = () => {
       <div className="space-y-4">
         {loading ? (
           <p>Loading...</p>
-        ) : experiences.map((exp) => (
+        ) : (Array.isArray(experiences) ? experiences : []).map((exp) => (
           <div key={exp._id} className="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl flex justify-between items-start">
             <div>
               <h4 className="text-xl font-bold">{exp.title}</h4>
