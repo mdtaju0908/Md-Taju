@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import api from "../../utils/api";
+import api, { unwrapList } from "../../utils/api";
 import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 
 const ProjectsManager = () => {
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -24,8 +25,8 @@ const ProjectsManager = () => {
 
   const fetchProjects = async () => {
     try {
-      const { data } = await api.get("/projects");
-      setProjects(data || []);
+      const res = await api.get("/projects");
+      setProjects(unwrapList(res, "data"));
     } catch (error) {
       setMessage({ type: "error", text: "Failed to load projects ❌" });
       console.error(error);
@@ -188,44 +189,48 @@ const ProjectsManager = () => {
       )}
 
       {/* Project List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.length === 0 && (
-          <p className="text-gray-500">No projects found.</p>
-        )}
+      {isLoading ? (
+        <p className="text-gray-500">Loading projects...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {(!Array.isArray(projects) || projects.length === 0) ? (
+            <p className="text-gray-500">No projects found.</p>
+          ) : (
+            projects.map(project => (
+              <div key={project._id}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col sm:flex-row sm:justify-between gap-4">
+                <div>
+                  <h3 className="font-bold text-lg text-gray-800 dark:text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    {project.description ? project.description.slice(0, 100) : ""}...
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {Array.isArray(project.techStack) && project.techStack.map((tech, i) => (
+                      <span key={i}
+                        className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-        {projects.map(project => (
-          <div key={project._id}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col sm:flex-row sm:justify-between gap-4">
-            <div>
-              <h3 className="font-bold text-lg text-gray-800 dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                {project.description.slice(0, 100)}...
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.techStack?.map((tech, i) => (
-                  <span key={i}
-                    className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">
-                    {tech}
-                  </span>
-                ))}
+                <div className="flex gap-2">
+                  <button onClick={() => handleEdit(project)}
+                    className="text-blue-600 hover:text-blue-800">
+                    <FaEdit />
+                  </button>
+                  <button onClick={() => handleDelete(project._id)}
+                    className="text-red-600 hover:text-red-800">
+                    <FaTrash />
+                  </button>
+                </div>
               </div>
-            </div>
-
-            <div className="flex gap-2">
-              <button onClick={() => handleEdit(project)}
-                className="text-blue-600 hover:text-blue-800">
-                <FaEdit />
-              </button>
-              <button onClick={() => handleDelete(project._id)}
-                className="text-red-600 hover:text-red-800">
-                <FaTrash />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };
