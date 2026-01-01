@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import api from '../../utils/api';
+import api, { unwrapList } from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
 import { FaTrash, FaUpload, FaImage } from 'react-icons/fa';
 
@@ -17,12 +17,15 @@ const GalleryManager = () => {
   const [message, setMessage] = useState({ type: '', text: '' });
 
   const fetchGallery = async () => {
+    setFetchLoading(true);
     try {
-      const { data } = await api.get('/gallery');
-      setGalleryItems(data);
-      setFetchLoading(false);
+      const res = await api.get('/gallery');
+      const list = unwrapList(res, 'data');
+      setGalleryItems(Array.isArray(list) ? list : []);
     } catch (error) {
       console.error('Error fetching gallery:', error);
+      setGalleryItems([]);
+    } finally {
       setFetchLoading(false);
     }
   };
@@ -209,23 +212,31 @@ const GalleryManager = () => {
       </form>
 
       {/* List of Gallery Items */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {galleryItems.map((item) => (
-          <div key={item._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden relative group">
-            <img src={item.imageUrl} alt={item.title} className="w-full h-48 object-cover" />
-            <button
-              onClick={() => handleDelete(item._id)}
-              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <FaTrash />
-            </button>
-            <div className="p-4">
-              <h3 className="font-bold text-gray-800 dark:text-white">{item.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      {fetchLoading ? (
+        <p className="text-gray-500">Loading gallery...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {Array.isArray(galleryItems) && galleryItems.length > 0 ? (
+            galleryItems.map((item) => (
+              <div key={item._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden relative group">
+                <img src={item.imageUrl} alt={item.title} className="w-full h-48 object-cover" />
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <FaTrash />
+                </button>
+                <div className="p-4">
+                  <h3 className="font-bold text-gray-800 dark:text-white">{item.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-500">No images found.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
