@@ -145,10 +145,10 @@ export default function About() {
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
             <img
-              src={photoUrl || "https://via.placeholder.com/400x400?text=Profile"}
+              src={photoUrl || "https://ui-avatars.com/api/?name=Md+Taju&size=400&background=0D8ABC&color=fff"}
               alt="Profile"
               onError={(e) =>
-                (e.target.src = "https://via.placeholder.com/400x400?text=Profile")
+                (e.target.src = "https://ui-avatars.com/api/?name=Md+Taju&size=400&background=0D8ABC&color=fff")
               }
               className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl object-cover shadow-2xl ring-4 ring-white dark:ring-gray-800"
             />
