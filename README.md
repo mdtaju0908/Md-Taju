@@ -81,37 +81,40 @@ The project includes:
 | GitHub | Version Control |
 
 ---
-
 ## 🌐 Connect With Me
 
 <p align="center">
   <a href="https://mdtaju.tech" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-mdtaju.tech-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Portfolio-mdtaju.tech-gradient?style=for-the-badge&logo=google-chrome&logoColor=white"/>
   </a>
   <a href="mailto:info@mdtaju.tech">
-    <img src="https://img.shields.io/badge/Email-info@mdtaju.tech-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Email-info@mdtaju.tech-gradient?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/mdtaju0908">
-    <img src="https://img.shields.io/badge/GitHub-mdtaju0908-171515?style=for-the-badge&logo=github&logoColor=white"/>
+    <img src="https://img.shields.io/badge/GitHub-mdtaju0908-000000?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
   <a href="https://www.linkedin.com/in/md-taju0908/">
-    <img src="https://img.shields.io/badge/LinkedIn-Md%20Taju-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/LinkedIn-Md%20Taju-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://www.instagram.com/md_taju0908/">
-    <img src="https://img.shields.io/badge/Instagram-@md_taju0908-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Instagram-@md__taju0908-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
   </a>
   <a href="https://x.com/md_taju0908">
-    <img src="https://img.shields.io/badge/X-@md_taju0908-000000?style=for-the-badge&logo=x&logoColor=white"/>
+    <img src="https://img.shields.io/badge/X-@md__taju0908-000000?style=for-the-badge&logo=x&logoColor=white"/>
   </a>
   <a href="https://www.youtube.com/@md_taju0908">
     <img src="https://img.shields.io/badge/YouTube-Md%20Taju-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
   </a>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer"/>
 </p>
 
 
