@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/login
 Disallow: /admin/dashboard
-Sitemap: https://mdtaju.com/sitemap.xml
+Sitemap: https://mdtaju.tech/sitemap.xml
