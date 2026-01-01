@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -8,28 +8,43 @@ const Hero = () => {
   const [bgUrl, setBgUrl] = useState(() => localStorage.getItem("siteHeroBgUrl") || "");
   const [ready, setReady] = useState(true);
   const [brand, setBrand] = useState({ name: "", title: "" });
+  const [images, setImages] = useState([]);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const [intervalMs, setIntervalMs] = useState(6000);
+  const [index, setIndex] = useState(0);
+  const timerRef = useRef(null);
+  const [nextUrl, setNextUrl] = useState(null);
+  const [sliding, setSliding] = useState(false);
 
   useEffect(() => {
-    const fetchAbout = async () => {
+    const fetchData = async () => {
       try {
-        const [{ data }, brandRes] = await Promise.all([
-          api.get("/about"),
+        const [bgRes, brandRes] = await Promise.all([
+          api.get("/about/hero-backgrounds"),
           api.get("/config/brand"),
         ]);
-        const url = data?.heroBg?.url || data?.heroBgUrl || "";
-        if (url && url !== bgUrl) {
+        const imgs = Array.isArray(bgRes?.data?.images) ? bgRes.data.images : [];
+        const s = bgRes?.data?.settings || {};
+        setImages(imgs);
+        setAutoRotate(typeof s.autoRotate === 'boolean' ? s.autoRotate : true);
+        setIntervalMs(typeof s.intervalMs === 'number' ? s.intervalMs : 6000);
+        
+        const firstUrl = imgs[0] || "";
+        const persisted = localStorage.getItem("siteHeroBgUrl");
+        const targetUrl = firstUrl || persisted || "";
+        if (targetUrl && targetUrl !== bgUrl) {
           setReady(false);
           const img = new Image();
           img.onload = () => {
-            setBgUrl(url);
-            localStorage.setItem("siteHeroBgUrl", url);
+            setBgUrl(targetUrl);
+            localStorage.setItem("siteHeroBgUrl", targetUrl);
             setReady(true);
           };
           img.onerror = () => {
             localStorage.removeItem("siteHeroBgUrl");
             setReady(true);
           };
-          img.src = url;
+          img.src = targetUrl;
         }
         if (brandRes?.data) {
           setBrand({ name: brandRes.data.name || "Md Taju", title: brandRes.data.title || "Full-Stack Developer & Software Engineer" });
@@ -38,24 +53,81 @@ const Hero = () => {
         // silent
       }
     };
-    fetchAbout();
+    fetchData();
   }, []);
+
+  // Auto-rotate logic
+  useEffect(() => {
+    if (!autoRotate || images.length < 2) return;
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setIndex(prev => (prev + 1) % images.length);
+    }, Math.max(2000, intervalMs));
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [autoRotate, intervalMs, images.length]);
+
+  // Preload and update bgUrl when index changes
+  useEffect(() => {
+    if (!images.length) return;
+    const url = images[index];
+    if (!url || url === bgUrl) return;
+    setReady(false);
+    const img = new Image();
+    img.onload = () => {
+      setNextUrl(url);
+      setSliding(true);
+      const duration = 700;
+      setTimeout(() => {
+        setBgUrl(url);
+        localStorage.setItem("siteHeroBgUrl", url);
+        setNextUrl(null);
+        setSliding(false);
+        setReady(true);
+      }, duration);
+    };
+    img.onerror = () => {
+      setReady(true);
+    };
+    img.src = url;
+  }, [index, images, bgUrl]);
 
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center pt-16 relative bg-center bg-cover md:bg-fixed bg-gray-900"
       style={{
-        backgroundImage: bgUrl ? `url(${bgUrl})` : undefined,
+        backgroundImage: images.length === 0 && bgUrl ? `url(${bgUrl})` : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
+      {images.length > 0 && (
+        <div className="absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+          {bgUrl && (
+            <img
+              src={bgUrl}
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 ease-in-out ${sliding ? "-translate-x-full" : "translate-x-0"}`}
+              style={{ willChange: "transform" }}
+            />
+          )}
+          {nextUrl && (
+            <img
+              src={nextUrl}
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 ease-in-out ${sliding ? "translate-x-0" : "translate-x-full"}`}
+              style={{ willChange: "transform" }}
+            />
+          )}
+        </div>
+      )}
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/40 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/50 to-black/40 backdrop-blur-sm transition-opacity duration-700"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
         {!ready && (
           <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-white text-xs">Loading background…</div>
         )}
