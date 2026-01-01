@@ -11,7 +11,8 @@ const getBaseUrl = () => {
 
 const api = axios.create({
   baseURL: getBaseUrl(),
-  withCredentials: true
+  withCredentials: true,
+  timeout: 60000 // 60 seconds timeout for Render cold starts
 });
 
 // Debug API Connection
