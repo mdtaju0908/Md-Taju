@@ -84,6 +84,10 @@ The project includes:
 ## 🌐 Connect With Me
 
 <p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=600&size=22&pause=1200&color=36BCF7&center=true&vCenter=true&width=700&lines=Full+Stack+Developer;AI+%26+ML+Enthusiast;Open+to+Opportunities+%26+Collaboration" />
+</p>
+
+<p align="center">
   <a href="https://mdtaju.tech" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-mdtaju.tech-gradient?style=for-the-badge&logo=google-chrome&logoColor=white"/>
   </a>
@@ -94,7 +98,7 @@ The project includes:
 
 <p align="center">
   <a href="https://github.com/mdtaju0908">
-    <img src="https://img.shields.io/badge/GitHub-mdtaju0908-000000?style=for-the-badge&logo=github&logoColor=white"/>
+    <img src="https://img.shields.io/badge/GitHub-mdtaju0908-181717?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
   <a href="https://www.linkedin.com/in/md-taju0908/">
     <img src="https://img.shields.io/badge/LinkedIn-Md%20Taju-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -102,6 +106,9 @@ The project includes:
 </p>
 
 <p align="center">
+  <a href="https://www.facebook.com/md.taju0908">
+    <img src="https://img.shields.io/badge/Facebook-Md%20Taju-1877F2?style=for-the-badge&logo=facebook&logoColor=white"/>
+  </a>
   <a href="https://www.instagram.com/md_taju0908/">
     <img src="https://img.shields.io/badge/Instagram-@md__taju0908-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
   </a>
