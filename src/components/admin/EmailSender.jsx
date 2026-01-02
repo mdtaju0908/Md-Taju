@@ -13,8 +13,8 @@ const EmailSender = () => {
   const [lineHeight, setLineHeight] = useState("1.6");
   const [brand, setBrand] = useState({
     name: "Md Taju",
-    title: "Full-Stack Developer & AI Engineer",
-    photoUrl: "https://mdtaju.tech/images/profile-photo.jpg",
+    title: "Developer & AI & ML Enthusiast",
+    photoUrl: "https://res.cloudinary.com/dixestnwa/image/upload/v1766172029/profile-photo_wxgdgn.jpg",
     ctaUrl: "https://mdtaju.tech",
     feedbackUrl: "https://mdtaju.tech/feedback",
     domain: "mdtaju.tech",
