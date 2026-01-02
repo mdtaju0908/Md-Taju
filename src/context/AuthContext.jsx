@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   const verifyOtpLogin = async (email, otp) => {
     try {
-      const { data } = await api.post('/auth/verify-otp', { email, otp });
+      const { data } = await api.post('/auth/verify-otp', { email, otp }, { timeout: 15000 });
       setUser(data);
       localStorage.setItem('userInfo', JSON.stringify(data));
       return { success: true };
@@ -50,12 +50,13 @@ export const AuthProvider = ({ children }) => {
 
   const startAdminLogin = async (email, password) => {
     try {
-      await api.post('/auth/login-start', { email, password });
+      await api.post('/auth/login-start', { email, password }, { timeout: 15000 });
       return { success: true };
     } catch (error) {
+      console.error("Login initiation error:", error);
       return {
         success: false,
-        message: error.response?.data?.message || 'Login initiation failed'
+        message: error.response?.data?.message || error.message || 'Login initiation failed'
       };
     }
   };
