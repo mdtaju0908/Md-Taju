@@ -81,6 +81,30 @@ The project includes:
 | GitHub | Version Control |
 
 ---
+
+## 📂 Project Structure
+
+```
+portfolio-project/
+├── client/                 # React Frontend
+│   ├── src/
+│   │   ├── components/     # Reusable components
+│   │   │   ├── admin/      # Admin dashboard components
+│   │   ├── context/        # React Context (Auth, Theme)
+│   │   ├── pages/          # Page components (Home, Login, Dashboard)
+│   │   ├── utils/          # Utilities (API setup)
+│   └── ...
+├── server/                 # Node.js Backend
+│   ├── config/             # DB connection
+│   ├── controllers/        # Request handlers
+│   ├── middleware/         # Auth middleware
+│   ├── models/             # Mongoose models
+│   ├── routes/             # API routes
+│   ├── .env                # Environment variables
+│   └── index.js            # Entry point
+└── README.md
+```
+
 ## 🌐 Connect With Me
 
 <p align="center">
@@ -123,26 +147,3 @@ The project includes:
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer"/>
 </p>
-
-
-
-## 📂 Project Structure
-
-```bash
-portfolio-project/
-│
-├── client/                # Frontend (React + Vite)
-│   ├── src/
-│   ├── pages/
-│   ├── utils/
-│   ├── .env
-│   └── package.json
-│
-├── server/                # Backend (Node + Express)
-│   ├── controllers/
-│   ├── routes/
-│   ├── utils/
-│   ├── index.js
-│   └── .env
-│
-└── README.md
