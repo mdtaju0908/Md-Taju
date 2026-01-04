@@ -1,4 +1,3 @@
-
 <h1 align="center">✨ Md Taju – Full Stack Portfolio Platform 🌐</h1>
 
 <p align="center">
