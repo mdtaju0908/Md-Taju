@@ -5,6 +5,7 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 const ProjectsManager = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -24,12 +25,16 @@ const ProjectsManager = () => {
   }, []);
 
   const fetchProjects = async () => {
+    setIsLoading(true);
     try {
       const res = await api.get("/projects");
       setProjects(unwrapList(res, "data"));
+      setMessage({ type: "", text: "" });
     } catch (error) {
       setMessage({ type: "error", text: "Failed to load projects ❌" });
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -46,6 +51,7 @@ const ProjectsManager = () => {
     };
 
     try {
+      setIsSubmitting(true);
       if (currentProject) {
         await api.put(`/projects/${currentProject._id}`, payload);
         setMessage({ type: "success", text: "Project updated successfully ✅" });
@@ -61,6 +67,8 @@ const ProjectsManager = () => {
         type: "error",
         text: error.response?.data?.message || "Project save failed ❌"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -179,9 +187,9 @@ const ProjectsManager = () => {
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
                 Cancel
               </button>
-              <button type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                Save
+              <button type="submit" disabled={isSubmitting}
+                className={`px-4 py-2 rounded text-white ${isSubmitting ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`}>
+                {isSubmitting ? "Saving..." : "Save"}
               </button>
             </div>
           </form>
@@ -204,7 +212,11 @@ const ProjectsManager = () => {
                     {project.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    {project.description ? project.description.slice(0, 100) : ""}...
+                    {(() => {
+                      const desc = project.description || "";
+                      const short = desc.slice(0, 100);
+                      return desc.length > 100 ? `${short}...` : short;
+                    })()}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {Array.isArray(project.techStack) && project.techStack.map((tech, i) => (
@@ -216,7 +228,27 @@ const ProjectsManager = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex items-center gap-3">
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 hover:text-green-800 text-sm underline"
+                    >
+                      Live
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white text-sm underline"
+                    >
+                      GitHub
+                    </a>
+                  )}
                   <button onClick={() => handleEdit(project)}
                     className="text-blue-600 hover:text-blue-800">
                     <FaEdit />
