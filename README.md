@@ -103,6 +103,12 @@ portfolio-project/
 │   └── index.js            # Entry point
 └── README.md
 ```
+## 📄 License
+This project is licensed under the MIT License.
+
+© 2026 Md Taju  
+Personal content, images, and branding are not permitted for reuse without permission.
+
 
 ## 🌐 Connect With Me
 
