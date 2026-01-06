@@ -109,6 +109,8 @@ This project is licensed under the MIT License.
 © 2026 Md Taju  
 Personal content, images, and branding are not permitted for reuse without permission.
 
+![Release](https://img.shields.io/github/v/release/mdtaju0908/Md-Taju)
+
 
 ## 🌐 Connect With Me
 
