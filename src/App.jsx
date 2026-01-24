@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
-import Blogs from './pages/Blogs';
-import BlogDetails from './pages/BlogDetails';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import AuthSuccess from './pages/AuthSuccess';
@@ -12,6 +10,13 @@ import Feedback from './pages/Feedback';
 import AIAssistant from './components/AIAssistant';
 
 function App() {
+  const RedirectToBlogHtml = () => {
+    useEffect(() => {
+      window.location.href = '/blog.html';
+    }, []);
+    return null;
+  };
+
   return (
     <AuthProvider>
       <ThemeProvider>
@@ -20,8 +25,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<Home />} />
-              <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blog/:slug" element={<BlogDetails />} />
+              <Route path="/blogs" element={<RedirectToBlogHtml />} />
+              <Route path="/blog/:slug" element={<RedirectToBlogHtml />} />
+              <Route path="/blog/*" element={<RedirectToBlogHtml />} />
               <Route path="/auth/success" element={<AuthSuccess />} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/admin/login" element={<Login />} />

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading... - Md Taju</title>
+    <title>Loading... - Article</title>
     <meta name="description" content="Read full article by Md Taju.">
     
     <!-- Open Graph / Facebook -->
@@ -109,7 +109,7 @@
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     <span class="font-medium">All Articles</span>
                 </a>
-                <a href="/" class="text-xl font-bold font-serif text-slate-900 dark:text-white">Md Taju<span class="text-primary">.</span></a>
+                <a href="/" class="text-xl font-bold font-serif text-slate-900 dark:text-white"><span class="text-primary">Article</span></a>
                 <button id="theme-toggle" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
@@ -143,7 +143,7 @@
                 
                 <!-- Author -->
                 <div class="flex items-center justify-center gap-4">
-                    <img src="https://mdtaju.tech/profile.jpg" alt="Md Taju" class="w-12 h-12 rounded-full border-2 border-white dark:border-slate-800 shadow-md">
+                    <img src="https://res.cloudinary.com/dixestnwa/image/upload/v1767541610/portfolio_uploads/nle34jmlvn7ktcjhv6ae.jpg" alt="Md Taju" class="w-12 h-12 rounded-full border-2 border-white dark:border-slate-800 shadow-md">
                     <div class="text-left">
                         <div class="font-bold text-slate-900 dark:text-white">Md Taju</div>
                         <div class="text-xs text-slate-500 uppercase tracking-wide">Full Stack Engineer</div>
@@ -159,6 +159,12 @@
             <!-- Content Body -->
             <div id="post-body" class="prose prose-lg dark:prose-invert max-w-none font-serif leading-relaxed">
                 <!-- Injected HTML -->
+            </div>
+
+            <!-- Reactions -->
+            <div id="post-reactions" class="mt-12 py-8 border-t border-b border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center gap-4">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Did you enjoy this article?</h3>
+                <div id="reactions-container" class="flex flex-wrap justify-center gap-3"></div>
             </div>
 
             <!-- FAQ Section (AI Overview Friendly) -->
@@ -217,6 +223,30 @@
                 </div>
             </div>
         </article>
+
+        <!-- Notification Banner -->
+        <div id="notification-banner" class="hidden w-full max-w-2xl mx-auto my-12 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all hover:shadow-md">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-800 rounded-full text-2xl">
+                    🔔
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-lg">Never miss an update</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Get notified instantly when new articles are published.</p>
+                </div>
+            </div>
+            <button id="notify-btn" class="w-full sm:w-auto px-6 py-3 bg-primary text-white font-medium rounded-full hover:bg-sky-600 transition-colors shadow-sm whitespace-nowrap flex items-center justify-center gap-2">
+                <span>Enable Notifications</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            </button>
+        </div>
+        
+        <div id="notification-success" class="hidden w-full max-w-2xl mx-auto my-12 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-2xl p-4 text-center">
+             <p class="text-green-700 dark:text-green-300 font-medium flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                You're subscribed to new article updates!
+             </p>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -224,10 +254,12 @@
         <p class="text-slate-500 text-sm">&copy; 2026 Md Taju. All rights reserved.</p>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
     <script>
         // CONFIG
-        const IS_LOCALHOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const API_BASE = IS_LOCALHOST ? 'http://localhost:5000/api' : 'https://api.mdtaju.tech/api';
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+        const API_BASE = isLocal ? 'http://localhost:5000/api' : 'https://api.mdtaju.tech/api';
 
         // ELEMENTS
         const loading = document.getElementById('loading');
@@ -246,22 +278,21 @@
                 document.getElementById("scroll-progress").style.width = scrolled + "%";
             };
 
-            // Get Slug from URL (query or path). ID is not supported.
+            // 1. Get Slug
             const urlParams = new URLSearchParams(window.location.search);
-            let slug = urlParams.get('slug');
+            const slug = urlParams.get('slug');
+            
+            console.log('Current Slug:', slug);
+            console.log('API Base:', API_BASE);
+
+            // 2. Validate Slug
             if (!slug) {
-                const path = window.location.pathname;
-                if (path.startsWith('/blog/') && path.length > 6) {
-                    slug = path.split('/blog/')[1];
-                }
-            }
-            if (!slug) {
+                console.warn("No slug found in URL query params");
                 showError();
                 return;
             }
-            if (!window.location.pathname.startsWith('/blog/')) {
-                window.history.replaceState({}, '', `/blog/${slug}`);
-            }
+
+            // 3. Fetch Data
             await fetchPost(slug);
         });
 
@@ -281,22 +312,35 @@
 
         async function fetchPost(slug) {
             try {
+                // Ensure loading state
+                loading.classList.remove('hidden');
+                error.classList.add('hidden');
+                content.classList.add('hidden');
+
                 const url = `${API_BASE}/blogs/slug/${slug}`;
-                
-                console.log(`Fetching blog post from: ${url}`);
+                console.log(`Fetching: ${url}`);
 
                 const res = await fetch(url);
+                console.log('Response Status:', res.status);
+
                 if (!res.ok) {
-                    const errorText = await res.text();
-                    console.error('API Error:', res.status, errorText);
-                    throw new Error('Post not found');
+                    const errText = await res.text();
+                    console.error('API Error Details:', errText);
+                    throw new Error(`API Error: ${res.status}`);
                 }
+
                 const blog = await res.json();
+                console.log('Blog Data:', blog);
                 
+                if (!blog || !blog._id) {
+                    throw new Error('Invalid blog data received');
+                }
+
                 renderPost(blog);
                 updateSEO(blog);
+
             } catch (err) {
-                console.error("Fetch error:", err);
+                console.error("Fetch Failed:", err);
                 showError();
             }
         }
@@ -304,41 +348,134 @@
         function renderPost(blog) {
             document.getElementById('post-title').textContent = blog.title;
             document.getElementById('post-category').textContent = blog.category || 'General';
-            document.getElementById('post-date').textContent = new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            const dateEl = document.getElementById('post-date');
+            // Simple date format
+            const date = new Date(blog.createdAt);
+            dateEl.textContent = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
             
             const img = document.getElementById('post-image');
             img.src = getImageUrl(blog.imageUrl || blog.image);
             img.alt = blog.title;
 
-            document.getElementById('post-body').innerHTML = blog.content; // Assumes HTML content from rich text editor
+            document.getElementById('post-body').innerHTML = blog.content;
             
+            renderLikeButton(blog);
+
+            // Show Content
             loading.classList.add('hidden');
             content.classList.remove('hidden');
         }
 
+        function renderLikeButton(blog) {
+            const container = document.getElementById('reactions-container');
+            if (!container) return;
+
+            const storageKey = blog.slug ? `blog-like-${blog.slug}` : `blog-like-${blog._id}`;
+            const isLiked = localStorage.getItem(storageKey) === 'true';
+            const count = blog.likes || 0;
+
+            container.innerHTML = `
+                <button id="like-btn-main" class="group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 transform hover:scale-105 active:scale-95 ${isLiked ? 'bg-red-50 border-red-200 text-red-500 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400 shadow-sm' : 'bg-white border-slate-200 text-slate-500 hover:border-red-200 hover:text-red-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400'}">
+                    <svg class="w-8 h-8 transition-transform duration-300 ${isLiked ? 'fill-current scale-110' : 'fill-none stroke-current group-hover:scale-110'}" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                    <span class="text-xl font-bold like-count">${count}</span>
+                </button>
+            `;
+
+            const btn = document.getElementById('like-btn-main');
+            if(btn) {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    
+                    const countEl = btn.querySelector('.like-count');
+                    const svg = btn.querySelector('svg');
+                    
+                    // Toggle
+                    const wasLiked = localStorage.getItem(storageKey) === 'true';
+                    const isNowLiked = !wasLiked;
+                    
+                    // Optimistic
+                    let currentCount = parseInt(countEl.textContent);
+                    currentCount = isNowLiked ? currentCount + 1 : Math.max(0, currentCount - 1);
+                    countEl.textContent = currentCount;
+                    
+                    localStorage.setItem(storageKey, isNowLiked);
+                    
+                    // Update Styles
+                    if(isNowLiked) {
+                        btn.className = 'group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 transform hover:scale-105 active:scale-95 bg-red-50 border-red-200 text-red-500 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400 shadow-sm';
+                        svg.classList.remove('fill-none', 'stroke-current');
+                        svg.classList.add('fill-current', 'scale-110');
+                    } else {
+                        btn.className = 'group flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 transform hover:scale-105 active:scale-95 bg-white border-slate-200 text-slate-500 hover:border-red-200 hover:text-red-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400';
+                        svg.classList.remove('fill-current', 'scale-110');
+                        svg.classList.add('fill-none', 'stroke-current');
+                    }
+
+                    try {
+                        const res = await fetch(`${API_BASE}/blogs/${blog._id}/react`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({})
+                        });
+                        const data = await res.json();
+                        if (res.ok) {
+                            countEl.textContent = data.likes;
+                        }
+                    } catch (err) {
+                        console.error("Like failed", err);
+                        // Revert? For now just log
+                    }
+                });
+            }
+        }
+
         function updateSEO(blog) {
-            document.title = `${blog.title} - Md Taju`;
-            document.querySelector('meta[name="description"]').setAttribute("content", blog.description || blog.title);
+            document.title = `${blog.title} - Article`;
+            
+            const desc = document.querySelector('meta[name="description"]');
+            if(desc) desc.setAttribute("content", blog.description || blog.title);
+
+            const canonical = document.querySelector('link[rel="canonical"]');
+            if(canonical) canonical.setAttribute("href", window.location.href);
             
             // Open Graph
-            document.querySelector('meta[property="og:title"]').setAttribute("content", blog.title);
-            document.querySelector('meta[property="og:description"]').setAttribute("content", blog.description);
-            document.querySelector('meta[property="og:image"]').setAttribute("content", getImageUrl(blog.imageUrl || blog.image));
-            document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if(ogTitle) ogTitle.setAttribute("content", blog.title);
+
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            if(ogDesc) ogDesc.setAttribute("content", blog.description);
+
+            const ogImage = document.querySelector('meta[property="og:image"]');
+            if(ogImage) ogImage.setAttribute("content", getImageUrl(blog.imageUrl || blog.image));
+
+            const ogUrl = document.querySelector('meta[property="og:url"]');
+            if(ogUrl) ogUrl.setAttribute("content", window.location.href);
 
             // Twitter
-            document.querySelector('meta[property="twitter:title"]').setAttribute("content", blog.title);
-            document.querySelector('meta[property="twitter:description"]').setAttribute("content", blog.description);
-            document.querySelector('meta[property="twitter:image"]').setAttribute("content", getImageUrl(blog.imageUrl || blog.image));
+            const twTitle = document.querySelector('meta[property="twitter:title"]');
+            if(twTitle) twTitle.setAttribute("content", blog.title);
 
-            // JSON-LD
+            const twDesc = document.querySelector('meta[property="twitter:description"]');
+            if(twDesc) twDesc.setAttribute("content", blog.description);
+
+            const twImage = document.querySelector('meta[property="twitter:image"]');
+            if(twImage) twImage.setAttribute("content", getImageUrl(blog.imageUrl || blog.image));
+
+            // JSON-LD BlogPosting
             const script = document.createElement('script');
             script.type = 'application/ld+json';
             script.text = JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": window.location.href
+                },
                 "headline": blog.title,
-                "image": getImageUrl(blog.imageUrl || blog.image),
+                "image": [getImageUrl(blog.imageUrl || blog.image)],
                 "datePublished": blog.createdAt,
                 "dateModified": blog.updatedAt || blog.createdAt,
                 "author": {
@@ -357,6 +494,17 @@
                 "description": blog.description
             });
             document.head.appendChild(script);
+
+            // JSON-LD FAQPage (Placeholder - Extract if possible or use Admin data)
+            // This is just a structure example as per requirements
+            const faqScript = document.createElement('script');
+            faqScript.type = 'application/ld+json';
+            faqScript.text = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [] 
+            });
+            document.head.appendChild(faqScript);
         }
 
         function getImageUrl(path) {
@@ -383,6 +531,86 @@
                 navigator.clipboard.writeText(window.location.href);
                 alert('Link copied to clipboard!');
             }
+        }
+
+        // FIREBASE INIT
+        let messaging;
+        let vapidKey;
+        const notifyBtn = document.getElementById('notify-btn');
+        const notifyBanner = document.getElementById('notification-banner');
+        const notifySuccess = document.getElementById('notification-success');
+
+        async function initFirebase() {
+            try {
+                // Fetch config
+                const res = await fetch(`${API_BASE}/config/firebase`);
+                if (!res.ok) return;
+                const config = await res.json();
+                
+                if (!config.apiKey) {
+                    console.log("Firebase not configured");
+                    return;
+                }
+
+                firebase.initializeApp(config);
+                messaging = firebase.messaging();
+                vapidKey = config.vapidKey;
+
+                if (messaging && notifyBtn && notifyBanner) {
+                    if (Notification.permission === 'default') {
+                        notifyBanner.classList.remove('hidden');
+                    }
+                    
+                    notifyBtn.addEventListener('click', requestPermission);
+                }
+            } catch (e) {
+                console.error("Firebase init failed", e);
+            }
+        }
+
+        // Only init if firebase is loaded
+        if (typeof firebase !== 'undefined') {
+            initFirebase();
+        } else {
+             window.addEventListener('load', () => {
+                 if (typeof firebase !== 'undefined') initFirebase();
+             });
+        }
+
+        function requestPermission() {
+            if (!messaging || !vapidKey) return;
+
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    notifyBanner.classList.add('hidden');
+                    notifySuccess.classList.remove('hidden');
+                    
+                    messaging.getToken({ vapidKey: vapidKey }).then((currentToken) => {
+                        if (currentToken) {
+                            sendTokenToServer(currentToken);
+                        }
+                    }).catch((err) => {
+                        console.log('An error occurred while retrieving token. ', err);
+                    });
+                } else {
+                    notifyBanner.classList.add('hidden');
+                    alert("Notifications blocked. You can enable them in your browser settings.");
+                }
+            });
+        }
+
+        function sendTokenToServer(token) {
+            fetch(`${API_BASE}/notifications/subscribe`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: token, deviceType: 'web' })
+            }).then(res => {
+                if(res.ok) {
+                    setTimeout(() => {
+                        notifySuccess.classList.add('hidden');
+                    }, 5000);
+                }
+            }).catch(err => console.error("Error subscribing", err));
         }
     </script>
 </body>

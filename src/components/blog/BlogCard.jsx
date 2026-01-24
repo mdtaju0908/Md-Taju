@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FaClock, FaEye } from 'react-icons/fa';
 
 const BlogCard = ({ blog }) => {
@@ -17,14 +16,14 @@ const BlogCard = ({ blog }) => {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 dark:border-gray-700">
-      <Link to={`/blog/${blog.slug}`}>
+      <a href={`/blog-post.html?slug=${blog.slug}`}>
         <img
           src={getImageUrl(blog.imageUrl || blog.image)}
           alt={blog.title}
           className="w-full h-48 object-cover object-center transition-opacity duration-300 hover:opacity-90"
           loading="lazy"
         />
-      </Link>
+      </a>
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold tracking-wide px-2 py-1 bg-blue-100 text-blue-600 rounded-full dark:bg-blue-900 dark:text-blue-300">
@@ -34,11 +33,11 @@ const BlogCard = ({ blog }) => {
             {new Date(blog.createdAt).toLocaleDateString()}
           </span>
         </div>
-        <Link to={`/blog/${blog.slug}`} className="block mt-2">
+        <a href={`/blog-post.html?slug=${blog.slug}`} className="block mt-2">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-2">
             {blog.title}
           </h3>
-        </Link>
+        </a>
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
           {blog.description}
         </p>
@@ -62,12 +61,12 @@ const BlogCard = ({ blog }) => {
               {blog.author}
             </span>
           </div>
-          <Link
-            to={`/blog/${blog.slug}`}
+          <a
+            href={`/blog-post.html?slug=${blog.slug}`}
             className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline"
           >
             Read More &rarr;
-          </Link>
+          </a>
         </div>
       </div>
     </div>

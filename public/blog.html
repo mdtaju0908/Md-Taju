@@ -13,14 +13,14 @@
     <meta property="og:url" content="https://mdtaju.tech/blog.html">
     <meta property="og:title" content="Insights & Thoughts - Md Taju">
     <meta property="og:description" content="Explore articles on AI, Full Stack Development, and Software Engineering.">
-    <meta property="og:image" content="https://mdtaju.tech/profile.jpg">
+    <meta property="og:image" content="https://res.cloudinary.com/dixestnwa/image/upload/v1767541610/portfolio_uploads/nle34jmlvn7ktcjhv6ae.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mdtaju.tech/blog.html">
     <meta property="twitter:title" content="Insights & Thoughts - Md Taju">
     <meta property="twitter:description" content="Explore articles on AI, Full Stack Development, and Software Engineering.">
-    <meta property="twitter:image" content="https://mdtaju.tech/profile.jpg">
+    <meta property="twitter:image" content="https://res.cloudinary.com/dixestnwa/image/upload/v1767541610/portfolio_uploads/nle34jmlvn7ktcjhv6ae.jpg">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -105,39 +105,68 @@
     <main class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
         
         <!-- Hero Section -->
-        <header class="mb-16 md:mb-24 text-center md:text-left md:flex md:items-end md:justify-between border-b border-slate-200 dark:border-slate-800 pb-12">
-            <div class="max-w-3xl">
+        <header class="relative mb-16 md:mb-24 text-center md:text-left md:flex md:items-end md:justify-between border-b border-slate-200 dark:border-slate-800 pb-12">
+            <!-- Background Accent -->
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+            
+            <div class="max-w-3xl relative z-10">
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-slate-900 dark:text-white mb-6 font-serif">
-                    The Engineering <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">Journal</span>
+                    The Engineering <br/> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-indigo-600 animate-gradient-x">Journal</span>
                 </h1>
                 <p class="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
-                    Deep dives into Full Stack Architecture, AI Integration, and the evolving landscape of software engineering. Curated by <span class="font-medium text-slate-900 dark:text-white">Md Taju</span>.
+                    Exploring the frontiers of <span class="font-medium text-slate-900 dark:text-white">Full Stack Architecture</span> & <span class="font-medium text-slate-900 dark:text-white">AI</span>. 
+                    Curated insights for the modern software engineer by <span class="font-medium text-primary">Md Taju</span>.
                 </p>
             </div>
             
             <!-- Search & Filter (Desktop) -->
-            <div class="hidden md:block w-full max-w-sm mt-8 md:mt-0">
+            <div class="hidden md:block w-full max-w-sm mt-8 md:mt-0 relative z-10">
                 <div class="relative group">
                     <input type="text" id="search-input" placeholder="Search articles..." 
-                        class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full py-3 px-6 pl-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all shadow-sm group-hover:shadow-md">
-                    <svg class="w-4 h-4 text-slate-400 absolute left-4 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        class="w-full bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-full py-3.5 px-6 pl-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all shadow-sm group-hover:shadow-lg dark:text-white placeholder-slate-400">
+                    <svg class="w-5 h-5 text-slate-400 absolute left-4 top-3.5 transition-colors group-focus-within:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
             </div>
         </header>
 
         <!-- Mobile Search & Categories -->
-        <div class="md:hidden mb-12 space-y-4">
-            <div class="relative">
+        <div class="md:hidden mb-12 space-y-4 relative z-10">
+            <div class="relative group">
                 <input type="text" id="search-input-mobile" placeholder="Search..." 
-                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg py-3 px-4 pl-10 text-sm focus:ring-1 focus:ring-primary">
-                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    class="w-full bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-full py-3 px-4 pl-11 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none transition-all shadow-sm dark:text-white placeholder-slate-400">
+                <svg class="w-5 h-5 text-slate-400 absolute left-4 top-3 transition-colors group-focus-within:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
         </div>
 
         <!-- Category Filters -->
-        <div class="flex flex-wrap gap-2 mb-12" id="category-filters">
-            <button class="category-btn active px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900" data-cat="All">All</button>
+        <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-12" id="category-filters">
+            <button class="category-btn active px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 shadow-md bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900 transform hover:scale-105" data-cat="All">All</button>
             <!-- Categories injected here -->
+        </div>
+
+        <!-- Notification Banner -->
+        <div id="notification-banner" class="hidden w-full mb-12 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all hover:shadow-md">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-800 rounded-full text-2xl">
+                    🔔
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-lg">Never miss an update</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Get notified instantly when new articles are published.</p>
+                </div>
+            </div>
+            <button id="notify-btn" class="w-full sm:w-auto px-6 py-3 bg-primary text-white font-medium rounded-full hover:bg-sky-600 transition-colors shadow-sm whitespace-nowrap flex items-center justify-center gap-2">
+                <span>Enable Notifications</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            </button>
+        </div>
+        
+        <div id="notification-success" class="hidden w-full mb-12 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-2xl p-4 text-center">
+             <p class="text-green-700 dark:text-green-300 font-medium flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                You're subscribed to new article updates!
+             </p>
         </div>
 
         <!-- Status Messages -->
@@ -151,9 +180,15 @@
             <button onclick="init()" class="mt-4 px-6 py-2 bg-white dark:bg-dark border border-red-200 dark:border-red-800 rounded-lg text-sm hover:shadow-lg transition-all">Retry Connection</button>
         </div>
 
-        <div id="empty-state" class="hidden text-center py-32">
-            <h3 class="text-2xl font-serif text-slate-400 mb-2">No articles found</h3>
-            <p class="text-slate-500">Try adjusting your search terms.</p>
+        <div id="empty-state" class="hidden flex flex-col items-center justify-center py-32 text-center">
+            <div class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-6">
+                <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">No articles found</h3>
+            <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-sm">We couldn't find any articles matching your current filters. Try searching for something else.</p>
+            <button onclick="window.location.reload()" class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                Clear Filters & Refresh
+            </button>
         </div>
 
         <!-- Blog Grid -->
@@ -225,21 +260,11 @@
         // CONFIG
         const IS_LOCALHOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const API_BASE = IS_LOCALHOST ? 'http://localhost:5000/api' : 'https://api.mdtaju.tech/api';
-        const REACTIONS = [
-            { key: 'like', emoji: '👍' },
-            { key: 'love', emoji: '❤️' },
-            { key: 'care', emoji: '🤗' },
-            { key: 'haha', emoji: '😂' },
-            { key: 'wow', emoji: '😮' },
-            { key: 'sad', emoji: '😢' },
-            { key: 'angry', emoji: '😡' },
-        ];
         
         // STATE
-        let allBlogs = [];
-        let filteredBlogs = [];
         let activeCategory = 'All';
         let searchQuery = '';
+        let isFirstLoad = true;
 
         // DOM ELEMENTS
         const grid = document.getElementById('blog-grid');
@@ -255,8 +280,37 @@
 
         async function init() {
             setupTheme();
-            await fetchBlogs();
             setupSearch();
+            await fetchBlogs();
+            
+            // Real-time time updates
+            setInterval(updateRelativeTimes, 60000); // Update every minute
+        }
+
+        // TIME UTILS
+        function timeAgo(dateParam) {
+            if (!dateParam) return null;
+            const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam);
+            const today = new Date();
+            const seconds = Math.round((today - date) / 1000);
+            const minutes = Math.round(seconds / 60);
+            const isToday = today.toDateString() === date.toDateString();
+      
+            if (seconds < 5) return 'Just now';
+            else if (seconds < 60) return `${seconds} seconds ago`;
+            else if (seconds < 90) return 'about a minute ago';
+            else if (minutes < 60) return `${minutes} minutes ago`;
+            else if (isToday) return `${Math.floor(minutes / 60)} hours ago`; 
+            else if (minutes < 1440) return `${Math.floor(minutes / 60)} hours ago`; // Fallback for 24h window
+            else if (minutes < 2880) return 'Yesterday';
+            else return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function updateRelativeTimes() {
+            document.querySelectorAll('.time-ago').forEach(el => {
+                const date = el.getAttribute('data-date');
+                if(date) el.textContent = timeAgo(date);
+            });
         }
 
         // THEME HANDLING
@@ -281,17 +335,22 @@
         async function fetchBlogs() {
             showLoading(true);
             try {
-                // Fetch ALL blogs (assuming pagination is high enough or loop)
-                // For this static implementation, fetching page 1 with large size is safe for now
-                const res = await fetch(`${API_BASE}/blogs?pageNumber=1&pageSize=100`); 
+                let url = `${API_BASE}/blogs?pageNumber=1&pageSize=100`;
+                if(searchQuery) url += `&keyword=${encodeURIComponent(searchQuery)}`;
+                if(activeCategory !== 'All') url += `&category=${encodeURIComponent(activeCategory)}`;
+
+                const res = await fetch(url); 
                 if (!res.ok) throw new Error('API Error');
                 
                 const data = await res.json();
-                allBlogs = data.blogs || [];
+                const blogs = data.blogs || [];
                 
-                extractCategories();
-                applyFilters(); // Initial render
+                if (isFirstLoad) {
+                    extractCategories(blogs);
+                    isFirstLoad = false;
+                }
                 
+                renderGrid(blogs);
                 showLoading(false);
             } catch (err) {
                 console.error(err);
@@ -301,8 +360,8 @@
         }
 
         // EXTRACT & RENDER CATEGORIES
-        function extractCategories() {
-            const cats = new Set(allBlogs.map(b => b.category).filter(Boolean));
+        function extractCategories(blogs) {
+            const cats = new Set(blogs.map(b => b.category).filter(Boolean));
             const categories = ['All', ...Array.from(cats)];
             
             // Keep "All" button, clear others
@@ -310,7 +369,10 @@
             
             categories.forEach(cat => {
                 const btn = document.createElement('button');
-                btn.className = `px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${cat === 'All' ? 'bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900' : 'bg-transparent border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500'}`;
+                const activeClasses = 'bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900 shadow-md transform hover:scale-105';
+                const inactiveClasses = 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 hover:-translate-y-0.5 shadow-sm';
+                
+                btn.className = `px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${cat === 'All' ? activeClasses : inactiveClasses}`;
                 btn.textContent = cat;
                 btn.onclick = () => setCategory(cat, btn);
                 catContainer.appendChild(btn);
@@ -321,40 +383,41 @@
         function setCategory(cat, btnElement) {
             activeCategory = cat;
             
+            const activeClasses = 'px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900 shadow-md transform hover:scale-105';
+            const inactiveClasses = 'px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 hover:-translate-y-0.5 shadow-sm';
+
             // Update UI
             Array.from(catContainer.children).forEach(b => {
-                b.className = 'px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-transparent border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500';
+                b.className = inactiveClasses;
             });
-            btnElement.className = 'px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900';
+            btnElement.className = activeClasses;
 
-            applyFilters();
+            fetchBlogs();
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
         }
 
         function setupSearch() {
-            const handler = (e) => {
-                searchQuery = e.target.value.toLowerCase();
-                applyFilters();
-            };
+            const handler = debounce((e) => {
+                searchQuery = e.target.value;
+                fetchBlogs();
+            }, 300);
+            
             if(searchInput) searchInput.addEventListener('input', handler);
             if(searchInputMobile) searchInputMobile.addEventListener('input', handler);
         }
 
-        function applyFilters() {
-            filteredBlogs = allBlogs.filter(blog => {
-                const matchesCat = activeCategory === 'All' || blog.category === activeCategory;
-                const matchesSearch = blog.title.toLowerCase().includes(searchQuery) || 
-                                      (blog.description && blog.description.toLowerCase().includes(searchQuery));
-                return matchesCat && matchesSearch;
-            });
-
-            renderGrid();
-        }
-
         // RENDER GRID
-        function renderGrid() {
+        function renderGrid(blogs) {
             grid.innerHTML = '';
             
-            if (filteredBlogs.length === 0) {
+            if (blogs.length === 0) {
                 grid.classList.add('hidden');
                 empty.classList.remove('hidden');
                 return;
@@ -363,7 +426,7 @@
             empty.classList.add('hidden');
             grid.classList.remove('hidden');
 
-            filteredBlogs.forEach((blog, index) => {
+            blogs.forEach((blog, index) => {
                 const isFeatured = index === 0 && activeCategory === 'All' && !searchQuery; // First item is featured
                 const card = createCard(blog, isFeatured);
                 
@@ -381,19 +444,8 @@
             article.className = `group flex flex-col ${isFeatured ? 'md:flex-row md:gap-8 items-center' : 'h-full'}`;
             
             const imgUrl = getImageUrl(blog.imageUrl || blog.image);
-            const date = new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-            const reactions = {
-                like: blog.reactions?.like || 0,
-                love: blog.reactions?.love || 0,
-                care: blog.reactions?.care || 0,
-                haha: blog.reactions?.haha || 0,
-                wow: blog.reactions?.wow || 0,
-                sad: blog.reactions?.sad || 0,
-                angry: blog.reactions?.angry || 0,
-            };
+            const timeString = timeAgo(blog.createdAt);
             
-            // Prefer slug from backend, fallback to ID if missing (for legacy data compatibility)
-            // Use query params strictly to avoid 404s on static servers without rewrites
             const postLink = blog.slug 
                 ? `blog-post.html?slug=${blog.slug}` 
                 : `blog-post.html?id=${blog._id}`;
@@ -402,19 +454,9 @@
                 ? 'w-full md:w-2/3 h-64 md:h-96 object-cover rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]' 
                 : 'w-full h-56 object-cover rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.02]';
 
-            const storageKey = blog.slug ? `blog-reaction-${blog.slug}` : `blog-reaction-${blog._id}`;
-            const activeReaction = localStorage.getItem(storageKey) || '';
-            const reactionButtons = REACTIONS.map((r) => {
-                const count = reactions[r.key] || 0;
-                const isActive = activeReaction === r.key;
-                const baseClasses = 'reaction-btn inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs transition-colors';
-                const activeClasses = 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-800';
-                const idleClasses = 'text-slate-600 border-slate-200 hover:bg-slate-100 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700';
-                return `<button class="${baseClasses} ${isActive ? activeClasses : idleClasses}" data-blog-id="${blog._id}" data-storage-key="${storageKey}" data-reaction="${r.key}" aria-label="${r.key}">
-                    <span>${r.emoji}</span>
-                    <span class="reaction-count" data-reaction="${r.key}">${count}</span>
-                </button>`;
-            }).join('');
+            const storageKey = blog.slug ? `blog-like-${blog.slug}` : `blog-like-${blog._id}`;
+            const isLiked = localStorage.getItem(storageKey) === 'true';
+            const likeCount = blog.likes || 0;
 
             article.innerHTML = `
                 <a href="${postLink}" class="block overflow-hidden rounded-2xl ${isFeatured ? 'md:w-2/3 w-full' : 'w-full'}">
@@ -425,7 +467,7 @@
                     <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-3">
                         <span class="text-primary">${blog.category || 'General'}</span>
                         <span>•</span>
-                        <span>${date}</span>
+                        <span class="time-ago" data-date="${blog.createdAt}">${timeString}</span>
                     </div>
                     
                     <h2 class="${isFeatured ? 'text-3xl md:text-4xl' : 'text-xl'} font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors font-serif leading-tight">
@@ -436,78 +478,69 @@
                         ${blog.description || ''}
                     </p>
                     
-                    <div class="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-4">
-                        <span class="inline-flex items-center gap-1">
-                            <span class="font-semibold">⏱</span> ${(blog.readingTime || 1)} min
-                        </span>
-                        <span class="inline-flex items-center gap-1">
-                            <span class="font-semibold">👁</span> ${(blog.views || 0)} views
-                        </span>
-                        <div class="flex flex-wrap gap-2">${reactionButtons}</div>
+                    <div class="flex items-center justify-between w-full mt-auto">
+                        <a href="${postLink}" class="inline-flex items-center text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors group/link">
+                            Read Article 
+                            <svg class="w-4 h-4 ml-1 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        
+                        <button class="like-btn group/like flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-300 ${isLiked ? 'bg-red-50 border-red-200 text-red-500 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400' : 'bg-white border-slate-200 text-slate-500 hover:border-red-200 hover:text-red-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400'}" 
+                            data-blog-id="${blog._id}" data-storage-key="${storageKey}">
+                            <svg class="w-4 h-4 ${isLiked ? 'fill-current' : 'fill-none stroke-current'}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            <span class="text-xs font-bold like-count">${likeCount}</span>
+                        </button>
                     </div>
-                    
-                    <a href="${postLink}" class="inline-flex items-center text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors mt-auto group/link">
-                        Read Article 
-                        <svg class="w-4 h-4 ml-1 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
                 </div>
             `;
 
-            const reactionBtns = article.querySelectorAll('.reaction-btn');
-            if (reactionBtns.length) {
-                reactionBtns.forEach((btn) => {
-                    btn.addEventListener('click', async (e) => {
-                        e.preventDefault();
-                        const targetBtn = e.currentTarget;
-                        const blogId = targetBtn.dataset.blogId;
-                        const storageKeyBtn = targetBtn.dataset.storageKey;
-                        const reactionType = targetBtn.dataset.reaction;
-                        reactionBtns.forEach((b) => { b.disabled = true; });
-                        try {
-                            const res = await fetch(`${API_BASE}/blogs/${blogId}/react`, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ type: reactionType })
-                            });
-                            const data = await res.json();
-                            if (!res.ok) throw new Error(data.message || 'Failed to react');
+            const likeBtn = article.querySelector('.like-btn');
+            if (likeBtn) {
+                likeBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const btn = e.currentTarget;
+                    const blogId = btn.dataset.blogId;
+                    const key = btn.dataset.storageKey;
+                    const countEl = btn.querySelector('.like-count');
+                    const svg = btn.querySelector('svg');
+                    
+                    // Toggle State
+                    const wasLiked = localStorage.getItem(key) === 'true';
+                    const isNowLiked = !wasLiked;
+                    
+                    // Optimistic UI Update
+                    let count = parseInt(countEl.textContent);
+                    count = isNowLiked ? count + 1 : Math.max(0, count - 1);
+                    countEl.textContent = count;
+                    
+                    localStorage.setItem(key, isNowLiked);
 
-                            const counts = {
-                                like: data.reactions?.like || 0,
-                                love: data.reactions?.love || 0,
-                                care: data.reactions?.care || 0,
-                                haha: data.reactions?.haha || 0,
-                                wow: data.reactions?.wow || 0,
-                                sad: data.reactions?.sad || 0,
-                                angry: data.reactions?.angry || 0,
-                            };
-                            const activeType = data.activeType || '';
+                    // Update Classes
+                    if (isNowLiked) {
+                        btn.className = 'like-btn group/like flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-300 bg-red-50 border-red-200 text-red-500 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400';
+                        svg.classList.remove('fill-none', 'stroke-current');
+                        svg.classList.add('fill-current');
+                    } else {
+                        btn.className = 'like-btn group/like flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-300 bg-white border-slate-200 text-slate-500 hover:border-red-200 hover:text-red-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:border-red-800 dark:hover:text-red-400';
+                        svg.classList.remove('fill-current');
+                        svg.classList.add('fill-none', 'stroke-current');
+                    }
 
-                            reactionBtns.forEach((b) => {
-                                const rType = b.dataset.reaction;
-                                const countNode = b.querySelector('.reaction-count');
-                                if (countNode && counts[rType] !== undefined) {
-                                    countNode.textContent = counts[rType];
-                                }
-                                b.classList.remove('bg-blue-50', 'text-blue-600', 'border-blue-200', 'dark:bg-blue-900/30', 'dark:text-blue-200', 'dark:border-blue-800');
-                                b.classList.add('text-slate-600', 'border-slate-200');
-                                b.classList.remove('dark:text-blue-200', 'dark:border-blue-800');
-                                b.classList.add('dark:text-slate-300', 'dark:border-slate-700');
-                                if (activeType && rType === activeType) {
-                                    b.classList.add('bg-blue-50', 'text-blue-600', 'border-blue-200', 'dark:bg-blue-900/30', 'dark:text-blue-200', 'dark:border-blue-800');
-                                    b.classList.remove('text-slate-600', 'border-slate-200', 'dark:text-slate-300', 'dark:border-slate-700');
-                                }
-                            });
-
-                            localStorage.setItem(storageKeyBtn, activeType);
-                        } catch (err) {
-                            console.error(err);
-                        } finally {
-                            reactionBtns.forEach((b) => { b.disabled = false; });
+                    try {
+                        const res = await fetch(`${API_BASE}/blogs/${blogId}/react`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({})
+                        });
+                        const data = await res.json();
+                        if (res.ok) {
+                            countEl.textContent = data.likes;
                         }
-                    });
+                    } catch (err) {
+                        console.error("Like failed", err);
+                    }
                 });
             }
+
             return article;
         }
 
@@ -527,6 +560,93 @@
             } else {
                 loading.classList.add('hidden');
             }
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+    <script>
+        // FIREBASE INIT
+        let messaging;
+        let vapidKey;
+        const notifyBtn = document.getElementById('notify-btn');
+        const notifyBanner = document.getElementById('notification-banner');
+        const notifySuccess = document.getElementById('notification-success');
+
+        async function initFirebase() {
+            try {
+                // Use global API_BASE from previous script
+                const res = await fetch(`${API_BASE}/config/firebase`);
+                if (!res.ok) return;
+                const config = await res.json();
+                
+                if (!config.apiKey) {
+                    console.log("Firebase not configured");
+                    return;
+                }
+
+                firebase.initializeApp(config);
+                messaging = firebase.messaging();
+                vapidKey = config.vapidKey;
+
+                if (messaging && notifyBtn && notifyBanner) {
+                    if (Notification.permission === 'default') {
+                        notifyBanner.classList.remove('hidden');
+                    } else if (Notification.permission === 'granted') {
+                         // Already subscribed, do nothing or show subtle status
+                         // console.log("User already granted permission");
+                    }
+                    
+                    notifyBtn.addEventListener('click', requestPermission);
+                }
+            } catch (e) {
+                console.error("Firebase init failed", e);
+            }
+        }
+
+        initFirebase();
+
+        function requestPermission() {
+            if (!messaging || !vapidKey) return;
+
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    console.log('Notification permission granted.');
+                    notifyBanner.classList.add('hidden');
+                    notifySuccess.classList.remove('hidden');
+                    
+                    // Get Token
+                    messaging.getToken({ vapidKey: vapidKey }).then((currentToken) => {
+                        if (currentToken) {
+                            sendTokenToServer(currentToken);
+                        } else {
+                            console.log('No registration token available.');
+                        }
+                    }).catch((err) => {
+                        console.log('An error occurred while retrieving token. ', err);
+                    });
+                } else {
+                    // Denied
+                    notifyBanner.classList.add('hidden');
+                    alert("Notifications blocked. You can enable them in your browser settings.");
+                }
+            });
+        }
+
+        function sendTokenToServer(token) {
+            // Use global API_BASE
+            fetch(`${API_BASE}/notifications/subscribe`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: token, deviceType: 'web' })
+            }).then(res => {
+                if(res.ok) {
+                    console.log("Subscribed successfully");
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        notifySuccess.classList.add('hidden');
+                    }, 5000);
+                }
+            }).catch(err => console.error("Error subscribing", err));
         }
     </script>
 </body>

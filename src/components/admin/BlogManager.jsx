@@ -38,8 +38,9 @@ const BlogManager = () => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    const val = type === 'checkbox' ? checked : value;
+    setFormData((prev) => ({ ...prev, [name]: val }));
   };
 
   const handleContentChange = (content) => {
@@ -234,6 +235,22 @@ const BlogManager = () => {
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">These help with SEO and display as tags on the blog post</p>
             </div>
+
+            {!editingBlog && (
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="notifyUsers"
+                  name="notifyUsers"
+                  checked={formData.notifyUsers}
+                  onChange={handleInputChange}
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label htmlFor="notifyUsers" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Notify subscribers about this new post
+                </label>
+              </div>
+            )}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cover Image</label>
