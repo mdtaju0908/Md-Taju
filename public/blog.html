@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Thoughts - Md Taju</title>
+    <meta name="description" content="Explore articles on AI, Full Stack Development, and Software Engineering by Md Taju.">
+    <link rel="canonical" href="https://mdtaju.tech/blog.html">
+    <link rel="icon" type="image/svg+xml" href="/profile.jpg" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mdtaju.tech/blog.html">
+    <meta property="og:title" content="Insights & Thoughts - Md Taju">
+    <meta property="og:description" content="Explore articles on AI, Full Stack Development, and Software Engineering.">
+    <meta property="og:image" content="https://mdtaju.tech/profile.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mdtaju.tech/blog.html">
+    <meta property="twitter:title" content="Insights & Thoughts - Md Taju">
+    <meta property="twitter:description" content="Explore articles on AI, Full Stack Development, and Software Engineering.">
+    <meta property="twitter:image" content="https://mdtaju.tech/profile.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9', // Sky 500
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .dark ::-webkit-scrollbar-track { background: #1e293b; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+        /* Loader */
+        .loader {
+            border-top-color: #0ea5e9;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
+    </style>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Md Taju's Blog",
+      "url": "https://mdtaju.tech/blog.html",
+      "description": "Personal blog of Md Taju covering AI, Machine Learning, and Web Development.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Md Taju",
+        "url": "https://mdtaju.tech"
+      }
+    }
+    </script>
+</head>
+<body class="bg-white dark:bg-dark text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-serif">
+                    <span class="text-primary">Md Taju</span>
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="/" class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">Portfolio</a>
+                    <a href="/blog.html" class="text-sm font-bold text-primary border-b-2 border-primary">Blog</a>
+                    
+                    <button id="theme-toggle" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+                        <!-- Icon injected by JS -->
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+        
+        <!-- Hero Section -->
+        <header class="mb-16 md:mb-24 text-center md:text-left md:flex md:items-end md:justify-between border-b border-slate-200 dark:border-slate-800 pb-12">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-slate-900 dark:text-white mb-6 font-serif">
+                    The Engineering <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">Journal</span>
+                </h1>
+                <p class="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
+                    Deep dives into Full Stack Architecture, AI Integration, and the evolving landscape of software engineering. Curated by <span class="font-medium text-slate-900 dark:text-white">Md Taju</span>.
+                </p>
+            </div>
+            
+            <!-- Search & Filter (Desktop) -->
+            <div class="hidden md:block w-full max-w-sm mt-8 md:mt-0">
+                <div class="relative group">
+                    <input type="text" id="search-input" placeholder="Search articles..." 
+                        class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full py-3 px-6 pl-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all shadow-sm group-hover:shadow-md">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-4 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Search & Categories -->
+        <div class="md:hidden mb-12 space-y-4">
+            <div class="relative">
+                <input type="text" id="search-input-mobile" placeholder="Search..." 
+                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg py-3 px-4 pl-10 text-sm focus:ring-1 focus:ring-primary">
+                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2 mb-12" id="category-filters">
+            <button class="category-btn active px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900" data-cat="All">All</button>
+            <!-- Categories injected here -->
+        </div>
+
+        <!-- Status Messages -->
+        <div id="loading" class="flex flex-col items-center justify-center py-24">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+            <p class="text-slate-500 text-sm animate-pulse">Fetching latest insights...</p>
+        </div>
+
+        <div id="error" class="hidden text-center py-20 bg-red-50 dark:bg-red-900/20 rounded-xl">
+            <p class="text-red-600 dark:text-red-400 font-medium" id="error-message">Failed to load content.</p>
+            <button onclick="init()" class="mt-4 px-6 py-2 bg-white dark:bg-dark border border-red-200 dark:border-red-800 rounded-lg text-sm hover:shadow-lg transition-all">Retry Connection</button>
+        </div>
+
+        <div id="empty-state" class="hidden text-center py-32">
+            <h3 class="text-2xl font-serif text-slate-400 mb-2">No articles found</h3>
+            <p class="text-slate-500">Try adjusting your search terms.</p>
+        </div>
+
+        <!-- Blog Grid -->
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 hidden">
+            <!-- Blog Cards injected here -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-black/40 pt-8 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <!-- Left: Identity -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-1">
+                        <span class="font-serif font-bold text-lg text-slate-900 dark:text-white">Md Taju</span>
+                        <span class="text-slate-300 dark:text-slate-600">|</span>
+                        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Software Engineer</span>
+                    </div>
+                    <p class="text-xs text-slate-400 dark:text-slate-500 font-light">&copy; 2026 All rights reserved.</p>
+                </div>
+
+                <!-- Right: Socials -->
+                <div class="flex items-center gap-4">
+                    <!-- GitHub -->
+                    <a href="https://github.com/mdtaju0908" target="_blank" aria-label="GitHub" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-black dark:group-hover:fill-white transition-colors" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/md-taju0908/" target="_blank" aria-label="LinkedIn" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-[#0077b5] transition-colors" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+
+                    <!-- Twitter / X -->
+                    <a href="https://x.com/md_taju0908/" target="_blank" aria-label="Twitter" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-black dark:group-hover:fill-white transition-colors" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/md.taju0908/" target="_blank" aria-label="Facebook" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-[#1877F2] transition-colors" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/md_taju0908/" target="_blank" aria-label="Instagram" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-[#E4405F] transition-colors" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="youtube.com/@md_taju0908/" target="_blank" aria-label="YouTube" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-[#FF0000] transition-colors" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:contact@mdtaju.tech" aria-label="Email" class="group p-2 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300">
+                        <svg class="w-5 h-5 fill-slate-600 dark:fill-slate-400 group-hover:fill-[#EA4335] transition-colors" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // CONFIG
+        const IS_LOCALHOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const API_BASE = IS_LOCALHOST ? 'http://localhost:5000/api' : 'https://api.mdtaju.tech/api';
+        const REACTIONS = [
+            { key: 'like', emoji: '👍' },
+            { key: 'love', emoji: '❤️' },
+            { key: 'care', emoji: '🤗' },
+            { key: 'haha', emoji: '😂' },
+            { key: 'wow', emoji: '😮' },
+            { key: 'sad', emoji: '😢' },
+            { key: 'angry', emoji: '😡' },
+        ];
+        
+        // STATE
+        let allBlogs = [];
+        let filteredBlogs = [];
+        let activeCategory = 'All';
+        let searchQuery = '';
+
+        // DOM ELEMENTS
+        const grid = document.getElementById('blog-grid');
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const empty = document.getElementById('empty-state');
+        const catContainer = document.getElementById('category-filters');
+        const searchInput = document.getElementById('search-input');
+        const searchInputMobile = document.getElementById('search-input-mobile');
+
+        // INIT
+        document.addEventListener('DOMContentLoaded', init);
+
+        async function init() {
+            setupTheme();
+            await fetchBlogs();
+            setupSearch();
+        }
+
+        // THEME HANDLING
+        function setupTheme() {
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+            
+            // Check saved theme or system preference
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            toggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+            });
+        }
+
+        // FETCH DATA
+        async function fetchBlogs() {
+            showLoading(true);
+            try {
+                // Fetch ALL blogs (assuming pagination is high enough or loop)
+                // For this static implementation, fetching page 1 with large size is safe for now
+                const res = await fetch(`${API_BASE}/blogs?pageNumber=1&pageSize=100`); 
+                if (!res.ok) throw new Error('API Error');
+                
+                const data = await res.json();
+                allBlogs = data.blogs || [];
+                
+                extractCategories();
+                applyFilters(); // Initial render
+                
+                showLoading(false);
+            } catch (err) {
+                console.error(err);
+                showLoading(false);
+                error.classList.remove('hidden');
+            }
+        }
+
+        // EXTRACT & RENDER CATEGORIES
+        function extractCategories() {
+            const cats = new Set(allBlogs.map(b => b.category).filter(Boolean));
+            const categories = ['All', ...Array.from(cats)];
+            
+            // Keep "All" button, clear others
+            catContainer.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${cat === 'All' ? 'bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900' : 'bg-transparent border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500'}`;
+                btn.textContent = cat;
+                btn.onclick = () => setCategory(cat, btn);
+                catContainer.appendChild(btn);
+            });
+        }
+
+        // FILTER LOGIC
+        function setCategory(cat, btnElement) {
+            activeCategory = cat;
+            
+            // Update UI
+            Array.from(catContainer.children).forEach(b => {
+                b.className = 'px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-transparent border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500';
+            });
+            btnElement.className = 'px-4 py-1.5 rounded-full text-sm font-medium border transition-colors bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900';
+
+            applyFilters();
+        }
+
+        function setupSearch() {
+            const handler = (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                applyFilters();
+            };
+            if(searchInput) searchInput.addEventListener('input', handler);
+            if(searchInputMobile) searchInputMobile.addEventListener('input', handler);
+        }
+
+        function applyFilters() {
+            filteredBlogs = allBlogs.filter(blog => {
+                const matchesCat = activeCategory === 'All' || blog.category === activeCategory;
+                const matchesSearch = blog.title.toLowerCase().includes(searchQuery) || 
+                                      (blog.description && blog.description.toLowerCase().includes(searchQuery));
+                return matchesCat && matchesSearch;
+            });
+
+            renderGrid();
+        }
+
+        // RENDER GRID
+        function renderGrid() {
+            grid.innerHTML = '';
+            
+            if (filteredBlogs.length === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            grid.classList.remove('hidden');
+
+            filteredBlogs.forEach((blog, index) => {
+                const isFeatured = index === 0 && activeCategory === 'All' && !searchQuery; // First item is featured
+                const card = createCard(blog, isFeatured);
+                
+                // If featured, make it span full width on large screens
+                if (isFeatured) {
+                    card.classList.add('md:col-span-2', 'lg:col-span-3', 'mb-8');
+                }
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function createCard(blog, isFeatured) {
+            const article = document.createElement('article');
+            article.className = `group flex flex-col ${isFeatured ? 'md:flex-row md:gap-8 items-center' : 'h-full'}`;
+            
+            const imgUrl = getImageUrl(blog.imageUrl || blog.image);
+            const date = new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            const reactions = {
+                like: blog.reactions?.like || 0,
+                love: blog.reactions?.love || 0,
+                care: blog.reactions?.care || 0,
+                haha: blog.reactions?.haha || 0,
+                wow: blog.reactions?.wow || 0,
+                sad: blog.reactions?.sad || 0,
+                angry: blog.reactions?.angry || 0,
+            };
+            
+            // Prefer slug from backend, fallback to ID if missing (for legacy data compatibility)
+            // Use query params strictly to avoid 404s on static servers without rewrites
+            const postLink = blog.slug 
+                ? `blog-post.html?slug=${blog.slug}` 
+                : `blog-post.html?id=${blog._id}`;
+
+            const imgClass = isFeatured 
+                ? 'w-full md:w-2/3 h-64 md:h-96 object-cover rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]' 
+                : 'w-full h-56 object-cover rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.02]';
+
+            const storageKey = blog.slug ? `blog-reaction-${blog.slug}` : `blog-reaction-${blog._id}`;
+            const activeReaction = localStorage.getItem(storageKey) || '';
+            const reactionButtons = REACTIONS.map((r) => {
+                const count = reactions[r.key] || 0;
+                const isActive = activeReaction === r.key;
+                const baseClasses = 'reaction-btn inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs transition-colors';
+                const activeClasses = 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-800';
+                const idleClasses = 'text-slate-600 border-slate-200 hover:bg-slate-100 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700';
+                return `<button class="${baseClasses} ${isActive ? activeClasses : idleClasses}" data-blog-id="${blog._id}" data-storage-key="${storageKey}" data-reaction="${r.key}" aria-label="${r.key}">
+                    <span>${r.emoji}</span>
+                    <span class="reaction-count" data-reaction="${r.key}">${count}</span>
+                </button>`;
+            }).join('');
+
+            article.innerHTML = `
+                <a href="${postLink}" class="block overflow-hidden rounded-2xl ${isFeatured ? 'md:w-2/3 w-full' : 'w-full'}">
+                    <img src="${imgUrl}" alt="${blog.title}" class="${imgClass}" loading="lazy">
+                </a>
+                
+                <div class="flex flex-col ${isFeatured ? 'md:w-1/3 w-full mt-6 md:mt-0 items-start' : 'mt-5 flex-grow'}">
+                    <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-3">
+                        <span class="text-primary">${blog.category || 'General'}</span>
+                        <span>•</span>
+                        <span>${date}</span>
+                    </div>
+                    
+                    <h2 class="${isFeatured ? 'text-3xl md:text-4xl' : 'text-xl'} font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors font-serif leading-tight">
+                        <a href="${postLink}">${blog.title}</a>
+                    </h2>
+                    
+                    <p class="text-slate-600 dark:text-slate-400 ${isFeatured ? 'text-lg line-clamp-4' : 'text-sm line-clamp-3'} mb-4 flex-grow">
+                        ${blog.description || ''}
+                    </p>
+                    
+                    <div class="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                        <span class="inline-flex items-center gap-1">
+                            <span class="font-semibold">⏱</span> ${(blog.readingTime || 1)} min
+                        </span>
+                        <span class="inline-flex items-center gap-1">
+                            <span class="font-semibold">👁</span> ${(blog.views || 0)} views
+                        </span>
+                        <div class="flex flex-wrap gap-2">${reactionButtons}</div>
+                    </div>
+                    
+                    <a href="${postLink}" class="inline-flex items-center text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors mt-auto group/link">
+                        Read Article 
+                        <svg class="w-4 h-4 ml-1 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            `;
+
+            const reactionBtns = article.querySelectorAll('.reaction-btn');
+            if (reactionBtns.length) {
+                reactionBtns.forEach((btn) => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const targetBtn = e.currentTarget;
+                        const blogId = targetBtn.dataset.blogId;
+                        const storageKeyBtn = targetBtn.dataset.storageKey;
+                        const reactionType = targetBtn.dataset.reaction;
+                        reactionBtns.forEach((b) => { b.disabled = true; });
+                        try {
+                            const res = await fetch(`${API_BASE}/blogs/${blogId}/react`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ type: reactionType })
+                            });
+                            const data = await res.json();
+                            if (!res.ok) throw new Error(data.message || 'Failed to react');
+
+                            const counts = {
+                                like: data.reactions?.like || 0,
+                                love: data.reactions?.love || 0,
+                                care: data.reactions?.care || 0,
+                                haha: data.reactions?.haha || 0,
+                                wow: data.reactions?.wow || 0,
+                                sad: data.reactions?.sad || 0,
+                                angry: data.reactions?.angry || 0,
+                            };
+                            const activeType = data.activeType || '';
+
+                            reactionBtns.forEach((b) => {
+                                const rType = b.dataset.reaction;
+                                const countNode = b.querySelector('.reaction-count');
+                                if (countNode && counts[rType] !== undefined) {
+                                    countNode.textContent = counts[rType];
+                                }
+                                b.classList.remove('bg-blue-50', 'text-blue-600', 'border-blue-200', 'dark:bg-blue-900/30', 'dark:text-blue-200', 'dark:border-blue-800');
+                                b.classList.add('text-slate-600', 'border-slate-200');
+                                b.classList.remove('dark:text-blue-200', 'dark:border-blue-800');
+                                b.classList.add('dark:text-slate-300', 'dark:border-slate-700');
+                                if (activeType && rType === activeType) {
+                                    b.classList.add('bg-blue-50', 'text-blue-600', 'border-blue-200', 'dark:bg-blue-900/30', 'dark:text-blue-200', 'dark:border-blue-800');
+                                    b.classList.remove('text-slate-600', 'border-slate-200', 'dark:text-slate-300', 'dark:border-slate-700');
+                                }
+                            });
+
+                            localStorage.setItem(storageKeyBtn, activeType);
+                        } catch (err) {
+                            console.error(err);
+                        } finally {
+                            reactionBtns.forEach((b) => { b.disabled = false; });
+                        }
+                    });
+                });
+            }
+            return article;
+        }
+
+        // UTILS
+        function getImageUrl(path) {
+            if (!path) return 'https://via.placeholder.com/800x600?text=No+Image';
+            if (path.startsWith('http')) return path;
+            const baseUrl = IS_LOCALHOST ? 'http://localhost:5000' : 'https://api.mdtaju.tech';
+            return `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
+        }
+
+        function showLoading(show) {
+            if(show) {
+                loading.classList.remove('hidden');
+                grid.classList.add('hidden');
+                empty.classList.add('hidden');
+            } else {
+                loading.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
