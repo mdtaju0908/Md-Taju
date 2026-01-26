@@ -138,6 +138,11 @@
                     <span id="post-category" class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-wider"></span>
                     <span class="text-slate-400">•</span>
                     <span id="post-date" class="text-slate-500 dark:text-slate-400 text-sm font-medium"></span>
+                    <span class="text-slate-400">•</span>
+                    <span id="post-views" class="text-slate-500 dark:text-slate-400 text-sm font-medium flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 5 8.268 7.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span class="count">0</span>
+                    </span>
                 </div>
                 <h1 id="post-title" class="text-4xl md:text-5xl/tight font-bold text-slate-900 dark:text-white font-serif mb-8"></h1>
                 
@@ -278,22 +283,23 @@
                 document.getElementById("scroll-progress").style.width = scrolled + "%";
             };
 
-            // 1. Get Slug
+            // 1. Get Slug or ID
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
+            const id = urlParams.get('id');
             
             console.log('Current Slug:', slug);
-            console.log('API Base:', API_BASE);
+            console.log('Current ID:', id);
 
-            // 2. Validate Slug
-            if (!slug) {
-                console.warn("No slug found in URL query params");
+            // 2. Validate
+            if (!slug && !id) {
+                console.warn("No slug or ID found in URL query params");
                 showError();
                 return;
             }
 
             // 3. Fetch Data
-            await fetchPost(slug);
+            await fetchPost(slug, id);
         });
 
         function setupTheme() {
@@ -310,14 +316,20 @@
             });
         }
 
-        async function fetchPost(slug) {
+        async function fetchPost(slug, id) {
             try {
                 // Ensure loading state
                 loading.classList.remove('hidden');
                 error.classList.add('hidden');
                 content.classList.add('hidden');
 
-                const url = `${API_BASE}/blogs/slug/${slug}`;
+                let url;
+                if (slug) {
+                    url = `${API_BASE}/blogs/slug/${slug}`;
+                } else {
+                    url = `${API_BASE}/blogs/${id}`;
+                }
+                
                 console.log(`Fetching: ${url}`);
 
                 const res = await fetch(url);
@@ -336,12 +348,39 @@
                     throw new Error('Invalid blog data received');
                 }
 
+                // If fetched by ID but slug exists, replace URL (SEO Friendly)
+                if (!slug && blog.slug) {
+                    const newUrl = `${window.location.pathname}?slug=${blog.slug}`;
+                    window.history.replaceState({ path: newUrl }, '', newUrl);
+                }
+
+                // Increment View
+                const targetSlug = blog.slug || slug;
+                if (targetSlug) {
+                    incrementView(targetSlug);
+                }
+
                 renderPost(blog);
                 updateSEO(blog);
 
             } catch (err) {
                 console.error("Fetch Failed:", err);
                 showError();
+            }
+        }
+
+        async function incrementView(slug) {
+            try {
+                const res = await fetch(`${API_BASE}/blogs/${slug}/view`, { method: 'POST' });
+                if (res.ok) {
+                    const data = await res.json();
+                    const viewsEl = document.querySelector('#post-views .count');
+                    if (viewsEl && data.views) {
+                        viewsEl.textContent = data.views;
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to increment view:", err);
             }
         }
 
@@ -353,6 +392,10 @@
             // Simple date format
             const date = new Date(blog.createdAt);
             dateEl.textContent = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            
+            // Views
+            const viewsEl = document.querySelector('#post-views .count');
+            if (viewsEl) viewsEl.textContent = blog.views || 0;
             
             const img = document.getElementById('post-image');
             img.src = getImageUrl(blog.imageUrl || blog.image);
