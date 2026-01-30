@@ -150,7 +150,3 @@ Personal content, images, and branding are not permitted for reuse without permi
     <img src="https://img.shields.io/badge/YouTube-Md%20Taju-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
   </a>
 </p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer"/>
-</p>
